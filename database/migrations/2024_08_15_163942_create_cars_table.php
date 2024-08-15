@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('make');
             $table->string('model');
             $table->integer('price');
+            $table->integer('mileage');
             $table->string('fuel');
             $table->year('year');
             $table->string('body_type');

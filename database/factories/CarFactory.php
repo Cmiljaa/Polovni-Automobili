@@ -22,6 +22,7 @@ class CarFactory extends Factory
             'make' => fake()->randomElement(['Audi', 'BMW', 'Mercedes-Benz']),
             'model' => fake()->word(),
             'price' => fake()->numberBetween(5000, 50000),
+            'mileage' => fake()->numberBetween(25000, 250000),
             'fuel' => fake()->randomElement(['diesel', 'petrol', 'electric']),
             'year' => fake()->year(),
             'body_type' => fake()->randomElement(['sedan', 'coupe', 'hatchback']),
