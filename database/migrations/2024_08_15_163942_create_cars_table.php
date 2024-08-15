@@ -17,6 +17,7 @@ return new class extends Migration
 
             $table->foreignIdFor(User::class)->constrained();
             $table->string('make');
+            $table->string('model');
             $table->integer('price');
             $table->string('fuel');
             $table->year('year');
@@ -26,7 +27,7 @@ return new class extends Migration
 
             $table->timestamps();
         });
-        
+
     }
 
     /**
