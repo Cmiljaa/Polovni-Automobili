@@ -11,11 +11,19 @@
         .navbar{
             margin: 0 250px;
         }
+        .search-container{
+            display: flex;
+            justify-content: center;
+            padding: 25px 0;
+            border: 2px orange solid;
+            margin: 20px 250px;
+        }
     </style>
 </head>
 <body>
     <x-nav-bar/>
     @yield('content')
+    @include('partials.footer')
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

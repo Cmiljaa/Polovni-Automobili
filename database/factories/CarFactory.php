@@ -19,7 +19,7 @@ class CarFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'make' => fake()->randomElement(['Audi', 'BMW', 'Mercedes-Benz']),
+            'brand' => fake()->randomElement(['Audi', 'BMW', 'Mercedes-Benz']),
             'model' => fake()->word(),
             'price' => fake()->numberBetween(5000, 50000),
             'mileage' => fake()->numberBetween(25000, 250000),

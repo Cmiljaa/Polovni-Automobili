@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
 
             $table->foreignIdFor(User::class)->constrained();
-            $table->string('make');
+            $table->string('brand');
             $table->string('model');
             $table->integer('price');
             $table->integer('mileage');
