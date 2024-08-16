@@ -8,6 +8,9 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        body{
+            background: #e6e6e6;
+        }
         .navbar{
             margin: 0 250px;
         }
@@ -17,6 +20,13 @@
             padding: 25px 0;
             border: 2px orange solid;
             margin: 20px 250px;
+        }
+        .basic-container {
+            padding: 25px 15px;
+            border: 2px solid orange;
+            border-radius: 2px;
+            margin: 30px auto;
+            max-width: 500px;
         }
     </style>
 </head>
