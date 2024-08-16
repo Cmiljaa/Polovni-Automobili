@@ -3,15 +3,23 @@
         <h3 class="text-center mb-4">Search Car</h3>
         <form>
             <div class="row mb-3">
-                @include('partials.brand')
-                @include('partials.price')
-                @include('partials.fuel')
+                <div class="col-md-4">
+                    @include('partials.brand')
+                </div>
+                <div class="col-md-4">
+                    @include('partials.price', ['label'=>'Price up to'])
+                </div>
+                <div class="col-md-4">
+                    @include('partials.fuel')
+                </div>
             </div>
 
             <div class="row mb-3">
                 @include('partials.year_from')
                 @include('partials.year_to')
-                @include('partials.body_type')
+                <div class="col-md-4">
+                    @include('partials.body_type')
+                </div>
             </div>
 
             <div class="text-center">
