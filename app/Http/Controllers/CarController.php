@@ -37,9 +37,10 @@ class CarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Car $car)
     {
-        
+        $car->load('user');
+        return view('car.show', ['car' => $car]);
     }
 
     /**

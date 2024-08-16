@@ -64,7 +64,7 @@
 
         .car-card-body p {
             margin: 5px 0;
-            color: #6c757d;
+            color: #303131;
         }
 
         .car-card-body .btn {

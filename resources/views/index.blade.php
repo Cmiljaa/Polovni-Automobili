@@ -13,7 +13,7 @@
                     </div>
                     <div class="car-card-body">
                         <h5>{{$car->brand}}</h5>
-                        <p>{{$car->price}}</p>
+                        <p>{{number_format($car->price, 0, '', '.')}} €</p>
                         <p>{{$car->year}}</p>
                         <a href="{{route('cars.show', $car)}}"><button class="btn">See More</button></a>
                     </div>
