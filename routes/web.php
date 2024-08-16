@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    //return view('index');
-    return view('car.create');
-});
+Route::get('/', [CarController::class, 'index']);
+
+Route::resource('cars', CarController::class);
