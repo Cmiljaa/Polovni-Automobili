@@ -6,14 +6,26 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <div class="d-flex">
-                <a href="{{route('user.showLoginForm')}}" class="me-2">
-                    <button class="btn btn-success">Login</button>
-                </a>
-                <a href="{{route('user.create')}}">
-                    <button class="btn btn-primary">Register</button>
-                </a>
-            </div>
+            
+            @if(Auth::check())
+                <div class="d-flex">
+                    <a href="{{route('cars.create')}}" class="me-2">
+                        <button class="btn btn-warning">Add New Car</button>
+                    </a>
+                    <a href="{{route('user.logout'))}}">
+                        <button class="btn btn-danger">Logout</button>
+                    </a>
+                </div>
+            @else
+                <div class="d-flex">
+                    <a href="{{route('user.showLoginForm')}}" class="me-2">
+                        <button class="btn btn-success">Login</button>
+                    </a>
+                    <a href="{{route('user.create')}}">
+                        <button class="btn btn-primary">Register</button>
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
 </nav>
