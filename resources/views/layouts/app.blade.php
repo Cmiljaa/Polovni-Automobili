@@ -31,7 +31,7 @@
             border: 2px solid orange;
             border-radius: 2px;
             margin: 30px auto;
-            max-width: 90%;
+            max-width: 40%;
         }
 
         .car-container {
