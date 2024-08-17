@@ -86,10 +86,20 @@ class UserController extends Controller
         ]);
 
         if(Auth::attempt($validatedData)){
+
             $request->session()->regenerate();
             return redirect(route('cars.index'));
         }
 
         return view('login', ['email' => 'Invalid credentials']);
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect(route('cars.index'));
     }
 }

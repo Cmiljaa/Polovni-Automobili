@@ -12,9 +12,10 @@
                     <a href="{{route('cars.create')}}" class="me-2">
                         <button class="btn btn-warning">Add New Car</button>
                     </a>
-                    <a href="{{route('user.logout'))}}">
-                        <button class="btn btn-danger">Logout</button>
-                    </a>
+                    <form action="{{route('user.logout')}}" method="POST">
+                        @csrf
+                        <button class="btn btn-danger" type="submit">Logout</button>
+                    </form>
                 </div>
             @else
                 <div class="d-flex">

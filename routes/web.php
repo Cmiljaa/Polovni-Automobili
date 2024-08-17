@@ -14,6 +14,10 @@ Route::post('/login', [UserController::class, 'login'])
 ->middleware('guest')
 ->name('user.login');
 
+Route::post('/logout', [UserController::class, 'logout'])
+->middleware('auth')
+->name('user.logout');
+
 Route::resource('cars', CarController::class);
 
 Route::resource('user', UserController::class);
