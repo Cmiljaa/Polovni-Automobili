@@ -2,11 +2,15 @@
 @section('content')
     <div class="basic-container mb-5">
         <h3 class="text-center mb-4">Login</h3>
-        <form action="" class="m-4">
+        <form action="{{route('user.login')}}" method="POST" class="m-4">
             <form method="POST">
+                @csrf
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    @isset($email)
+                        <p class="text-danger">{{$email}}</p>
+                    @endisset
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>

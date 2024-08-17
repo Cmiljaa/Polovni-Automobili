@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             <div class="d-flex">
-                <a href="{{route('user.login')}}" class="me-2">
+                <a href="{{route('user.showLoginForm')}}" class="me-2">
                     <button class="btn btn-success">Login</button>
                 </a>
                 <a href="{{route('user.create')}}">
