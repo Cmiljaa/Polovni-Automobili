@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -27,7 +28,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:80',
+            'email' => 'required|email',
+            'phone' => 'required|min:5|max:15',
+            'password' => 'required|min:8|same:confirm_password'
+        ]);
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        User::create($validatedData);
+        
+        return redirect(route('cars.index'));
     }
 
     /**
