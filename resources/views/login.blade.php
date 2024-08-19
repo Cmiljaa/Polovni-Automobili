@@ -2,7 +2,7 @@
 @section('content')
     <div class="basic-container mb-5">
         <h3 class="text-center mb-4">Login</h3>
-        <form action="{{route('user.login')}}" method="POST" class="m-4">
+        <form action="{{route('handleLogin')}}" method="POST" class="m-4">
             <form method="POST">
                 @csrf
                 <div class="mb-3">

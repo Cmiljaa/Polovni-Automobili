@@ -19,7 +19,7 @@
                 </div>
             @else
                 <div class="d-flex">
-                    <a href="{{route('user.showLoginForm')}}" class="me-2">
+                    <a href="{{route('login')}}" class="me-2">
                         <button class="btn btn-success">Login</button>
                     </a>
                     <a href="{{route('user.create')}}">

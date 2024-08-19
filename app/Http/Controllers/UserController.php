@@ -75,11 +75,11 @@ class UserController extends Controller
         //
     }
 
-    public function showLoginForm(){
+    public function login(){
         return view('login');
     }
 
-    public function login(Request $request){
+    public function handleLogin(Request $request){
         $validatedData = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:8'
