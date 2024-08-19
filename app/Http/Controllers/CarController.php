@@ -70,27 +70,11 @@ class CarController extends Controller
     public function filter(Request $request){
         $query = Car::query();
 
-        if($request->filled('brand'))
-            $query->where('brand', $request->input('brand'));
+        $query->ByParams(['brand', 'fuel', 'body_type']);
 
-        if($request->filled('fuel'))
-            $query->where('fuel', $request->input('fuel'));
+        $query->ByPrice($request->input('price'));
 
-        if($request->filled('price'))
-            $query->where('price', '<=', $request->input('price'));
-
-        if ($request->filled('year_from') && $request->filled('year_to')) {
-            $yearFrom = min($request->input('year_from'), $request->input('year_to'));
-            $yearTo = max($request->input('year_from'), $request->input('year_to'));
-            $query->whereBetween('year', [$yearFrom, $yearTo]);
-        } elseif ($request->filled('year_from')) {
-            $query->where('year', '>=', $request->input('year_from'));
-        } elseif ($request->filled('year_to')) {
-            $query->where('year', '<=', $request->input('year_to'));
-        }
-
-        if($request->filled('body_type'))
-            $query->where('body_type', $request->input('body_type'));
+        $query->ByYear($request->input('year_from'), $request->input('year_to'));
 
         $cars = $query->get();
 
