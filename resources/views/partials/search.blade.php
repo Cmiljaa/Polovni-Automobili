@@ -1,7 +1,7 @@
 <div class="search-container">
     <div class="w-75"> 
         <h3 class="text-center mb-4">Search Car</h3>
-        <form>
+        <form action="{{route('cars.filter')}}" method="GET">
             <div class="row mb-3">
                 <div class="col-md-4">
                     @include('partials.brand')

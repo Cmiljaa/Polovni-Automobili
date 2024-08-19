@@ -1,6 +1,6 @@
 <label for="brand" class="form-label">Brand</label>
 <select id="brand" class="form-select" name="brand">
-    <option selected disabled>All brands</option>
+    <option selected value="">All brands</option>
     <option value="toyota">Toyota</option>
     <option value="honda">Honda</option>
     <option value="ford">Ford</option>
