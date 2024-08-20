@@ -19,13 +19,17 @@ class CarFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'brand' => fake()->randomElement(['Audi', 'BMW', 'Mercedes-Benz']),
+            'brand' => fake()->randomElement([
+                'Audi', 'BMW', 'Mercedes-Benz', 'Toyota', 'Honda', 'Ford', 'Chevrolet', 'Nissan', 'Volkswagen', 'Hyundai',
+                'Kia', 'Subaru', 'Mazda', 'Porsche', 'Jaguar', 'Land Rover', 'Lexus', 'Volvo', 'Buick', 'Chrysler'
+            ]
+            ),
             'model' => fake()->word(),
-            'price' => fake()->numberBetween(5000, 50000),
-            'mileage' => fake()->numberBetween(25000, 250000),
-            'fuel' => fake()->randomElement(['diesel', 'petrol', 'electric']),
+            'price' => fake()->numberBetween(5000, 100000),
+            'mileage' => fake()->numberBetween(25000, 300000),
+            'fuel' => fake()->randomElement(['diesel', 'petrol', 'electric, hybrid']),
             'year' => fake()->year(),
-            'body_type' => fake()->randomElement(['sedan', 'coupe', 'hatchback']),
+            'body_type' => fake()->randomElement(['crossover', 'convertible', 'coupe', 'hatchback', 'sedan', 'sports_car', 'suv', 'truck', 'van', 'wagon']),
             'allowed' => true,
             'image' => fake()->imageUrl()
         ];

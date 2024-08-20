@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->count(10)->create()->each(function($user){
-            Car::factory(rand(1, 3))->create([
+            Car::factory(rand(5, 10))->create([
                 'user_id' => $user->id
             ]);
         });
