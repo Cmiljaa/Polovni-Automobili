@@ -3,7 +3,7 @@
     <div class="basic-container" style="max-width: 80%; border: 0px; margin-top: 20px;">
         <div class="row">
             <div class="col-md-6">
-                <img src="{{$car->image}}" alt="{{ $car->brand }}" class="img-fluid" style="max-width: 100%;">
+                <img src="{{ asset($car->image) }}" alt="{{ $car->image }}" class="img-fluid" style="max-width: 100%;">
             </div>
             <div class="col-md-6" style="font-size: 18px">
                 <h3>{{ $car->brand }}</h3>

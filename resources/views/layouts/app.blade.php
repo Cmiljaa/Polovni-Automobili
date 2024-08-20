@@ -49,8 +49,8 @@
         }
 
         .car-card img {
-            width: 100%;
-            height: auto;
+            width: 350px;
+            height: 250px;
         }
 
         .car-card-body {
