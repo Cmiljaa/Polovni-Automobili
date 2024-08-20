@@ -21,6 +21,8 @@
             @empty
                 <p>No cars available.</p>
             @endforelse
+
+            {{$cars->links()}}
         </div>
     </div>
     
