@@ -13,7 +13,7 @@
                         <p>{{number_format($car->price, 0, '', '.')}} €</p>
                         <p>{{$car->year}}</p>
                         <a href="{{route('cars.show', $car)}}"><button class="btn btn-show">See More</button></a>
-                        <a href="#"><button class="btn btn-primary">Edit</button></a>
+                        <a href="{{route('cars.edit', $car)}}"><button class="btn btn-primary">Edit</button></a>
                         <form action="{{route('cars.destroy', $car)}}" method="POST" class="btn p-0 border-0">
                             @csrf
                             @method('DELETE')
