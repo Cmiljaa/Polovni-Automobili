@@ -1,60 +1,17 @@
+@php
+    $brands = ["Abarth", "Acura", "Alfa-Romeo", "Alpina", "Aston-Martin", "Audi", "Bentley", "BMW",
+    "Bugatti","Buick", "Cadillac", "Chevrolet", "Chrysler","Citroen", "Cupra", "Dacia", "Dodge",
+    "Ferrari","Fiat", "Ford", "Genesis", "GMC", "Honda", "Hyundai" , "Infiniti", "Jaguar", "Jeep","Kia",
+    "Koenigsegg", "Lamborghini", "Land-Rover", "Lexus", "Lincoln", "Lotus", "Mazda", "Maserati", "McLaren",
+    "Mercedes-Benz", "Mini", "Mitsubishi", "Nissan", "Pagani","Peugeot", "Porsche", "RAM", "Renault",
+    "Rolls-Royce", "SEAT", "Skoda", "Subaru", "Suzuki", "Tesla","Toyota", "Volkswagen", "Volvo"];
+@endphp
 <label for="brand" class="form-label">Brand</label>
 <select id="brand" class="form-select" name="brand">
-    <option selected value="">All brands</option>
-    <option value="Abarth">Abarth</option>
-    <option value="Acura">Acura</option>
-    <option value="Alfa-Romeo">Alfa Romeo</option>
-    <option value="alpina">Alpina</option>
-    <option value="Aston-Martin">Aston Martin</option>
-    <option value="Audi">Audi</option>
-    <option value="Bentley">Bentley</option>
-    <option value="BMW">BMW</option>
-    <option value="Bugatti">Bugatti</option>
-    <option value="Buick">Buick</option>
-    <option value="Cadillac">Cadillac</option>
-    <option value="Chevrolet">Chevrolet</option>
-    <option value="Chrysler">Chrysler</option>
-    <option value="Citroen">Citroën</option>
-    <option value="Cupra">Cupra</option>
-    <option value="Dacia">Dacia</option>
-    <option value="Dodge">Dodge</option>
-    <option value="Ferrari">Ferrari</option>
-    <option value="Fiat">Fiat</option>
-    <option value="Ford">Ford</option>
-    <option value="Genesis">Genesis</option>
-    <option value="GMC">GMC</option>
-    <option value=Honda">Honda</option>
-    <option value="Hyundai">Hyundai</option>
-    <option value="Infiniti">Infiniti</option>
-    <option value="jaguar">Jaguar</option>
-    <option value="jeep">Jeep</option>
-    <option value="kia">Kia</option>
-    <option value="koenigsegg">Koenigsegg</option>
-    <option value="lamborghini">Lamborghini</option>
-    <option value="land-rover">Land Rover</option>
-    <option value="lexus">Lexus</option>
-    <option value="lincoln">Lincoln</option>
-    <option value="lotus">Lotus</option>
-    <option value="mazda">Mazda</option>
-    <option value="maserati">Maserati</option>
-    <option value="mclaren">McLaren</option>
-    <option value="mercedes-benz">Mercedes-Benz</option>
-    <option value="mini">Mini</option>
-    <option value="mitsubishi">Mitsubishi</option>
-    <option value="nissan">Nissan</option>
-    <option value="pagani">Pagani</option>
-    <option value="peugeot">Peugeot</option>
-    <option value="porsche">Porsche</option>
-    <option value="ram">RAM</option>
-    <option value="renault">Renault</option>
-    <option value="rolls-royce">Rolls-Royce</option>
-    <option value="seat">SEAT</option>
-    <option value="skoda">Skoda</option>
-    <option value="subaru">Subaru</option>
-    <option value="suzuki">Suzuki</option>
-    <option value="tesla">Tesla</option>
-    <option value="toyota">Toyota</option>
-    <option value="volkswagen">Volkswagen</option>
-    <option value="volvo">Volvo</option>
+    <option value="">All Brands</option>
+    @foreach ($brands as $brand)
+        <option value="{{$brand}}" {{ (isset($selectedBrand) && $selectedBrand == $brand) || old('brand') == $brand ? 'selected' : '' }}>
+            {{$brand}}
+        </option>
+    @endforeach
 </select>
-
