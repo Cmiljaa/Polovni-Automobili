@@ -102,7 +102,7 @@ class CarController extends Controller
 
         $query->ByYear($request->input('year_from'), $request->input('year_to'));
 
-        $cars = $query->paginate(12);
+        $cars = $query->latest()->paginate(12);
 
         return view('index', ['cars' => $cars]); 
     }

@@ -12,7 +12,9 @@
                         <h5>{{$car->brand}}</h5>
                         <p>{{number_format($car->price, 0, '', '.')}} €</p>
                         <p>{{$car->year}}</p>
-                        <a href="{{route('cars.show', $car)}}"><button class="btn">See More</button></a>
+                        <a href="{{route('cars.show', $car)}}"><button class="btn btn-show">See More</button></a>
+                        <a href="#"><button class="btn btn-primary">Edit</button></a>
+                        <a href="#"><button class="btn btn-danger">Delete</button></a>
                     </div>
                 </div>
             @empty
