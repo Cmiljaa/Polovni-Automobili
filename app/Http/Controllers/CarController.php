@@ -88,9 +88,10 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Car $car)
     {
-        //
+        $car->delete();
+        return redirect(route('user.list'));
     }
 
     public function filter(Request $request){
