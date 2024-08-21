@@ -80,9 +80,33 @@ class CarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Car $car)
     {
-        //
+        $validatedData = $request->validate([
+            'brand' => 'required',
+            'price' => 'required|max:1000000',
+            'fuel' => 'required',
+            'year' => 'required',
+            'mileage' => 'required|max:2000000',
+            'model' => 'required|max:50',
+            'body_type' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $validatedData['user_id'] = Auth::id();
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '_' . $file->getClientOriginalName();
+
+            $file->move(public_path('images'), $filename);
+    
+            $validatedData['image'] = 'images/' . $filename;
+        }
+
+        $car->update($validatedData);
+
+        return redirect(route('user.list'));
     }
 
     /**
