@@ -9,6 +9,9 @@
             
             @if(Auth::check())
                 <div class="d-flex">
+                    <a href="{{route('user.list')}}" class="me-2">
+                        <button class="btn btn-primary">Your Cars</button>
+                    </a>
                     <a href="{{route('cars.create')}}" class="me-2">
                         <button class="btn btn-warning">Add New Car</button>
                     </a>

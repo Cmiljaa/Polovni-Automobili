@@ -9,11 +9,16 @@ Route::redirect('/', '/cars');
 Route::get('/cars/filter', [CarController::class, 'filter'])
 ->name('cars.filter');
 
+Route::get('/user/list', [UserController::class, 'list'])
+->middleware('auth')
+->name('user.list');
+
 Route::resource('cars', CarController::class);
 
 Route::resource('user', UserController::class);
 
 Route::middleware('auth')->group(function(){
+
     Route::get('/cars/create', [CarController::class, 'create'])
     ->name('cars.create');
     

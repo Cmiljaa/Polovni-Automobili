@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Car;
 
 class UserController extends Controller
 {
@@ -101,5 +102,12 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect(route('cars.index'));
+    }
+
+    public function list(){
+
+        $cars = Car::where('user_id', Auth::id())->latest()->paginate(12);
+
+        return view('list', ['cars' => $cars]);
     }
 }
