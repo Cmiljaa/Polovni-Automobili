@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class CarController extends Controller
 {
@@ -90,7 +91,7 @@ class CarController extends Controller
             'mileage' => 'required|max:2000000',
             'model' => 'required|max:50',
             'body_type' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $validatedData['user_id'] = Auth::id();
@@ -100,6 +101,10 @@ class CarController extends Controller
             $filename = time() . '_' . $file->getClientOriginalName();
 
             $file->move(public_path('images'), $filename);
+
+            if (File::exists(public_path($car->image))) {
+                File::delete(public_path($car->image));
+            }
     
             $validatedData['image'] = 'images/' . $filename;
         }
@@ -114,6 +119,9 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
+        if (File::exists(public_path($car->image))) {
+            File::delete(public_path($car->image));
+        }
         $car->delete();
         return redirect(route('user.list'));
     }
