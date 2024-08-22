@@ -33,3 +33,5 @@
         </div>
     </div>
 </nav>
+
+@include('partials.messages')

@@ -77,10 +77,16 @@
             border: 1px solid #ffc107;
             color: #000;
         }
+        .message-container {
+            margin: 0px auto;
+            margin-top: 10px;
+            max-width: 1100px;
+        }
     </style>
 </head>
 <body>
     <x-nav-bar/>
+    
     @yield('content')
     @include('partials.footer')
 </body>

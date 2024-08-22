@@ -41,7 +41,7 @@ class UserController extends Controller
 
         User::create($validatedData);
         
-        return redirect(route('cars.index'));
+        return redirect(route('cars.index'))->with('success', 'Successfully created profile!');
     }
 
     /**
@@ -87,9 +87,8 @@ class UserController extends Controller
         ]);
 
         if(Auth::attempt($validatedData)){
-
             $request->session()->regenerate();
-            return redirect(route('cars.index'));
+            return redirect(route('cars.index'))->with('success', 'Successfully logged in!');
         }
 
         return view('login', ['email' => 'Invalid credentials']);
@@ -101,7 +100,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect(route('cars.index'));
+        return redirect(route('cars.index'))->with('success', 'Successfully logged out!');
     }
 
     public function list(){

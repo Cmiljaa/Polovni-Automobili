@@ -57,7 +57,7 @@ class CarController extends Controller
 
         Car::create($validatedData);
 
-        return redirect(route('cars.index'));
+        return redirect(route('cars.index'))->with('success', 'Successfully created car!');
         
     }
 
@@ -111,7 +111,7 @@ class CarController extends Controller
 
         $car->update($validatedData);
 
-        return redirect(route('user.list'));
+        return redirect(route('user.list'))->with('success', 'Successfully updated car!');
     }
 
     /**
@@ -123,7 +123,7 @@ class CarController extends Controller
             File::delete(public_path($car->image));
         }
         $car->delete();
-        return redirect(route('user.list'));
+        return redirect(route('user.list'))->with('success', 'Successfully deleted car!');
     }
 
     public function filter(Request $request){
