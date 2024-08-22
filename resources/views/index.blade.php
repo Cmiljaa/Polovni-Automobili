@@ -4,7 +4,7 @@
     @include('partials.search')
 
     <div class="car-container">
-        <h2>Cars</h2>
+        <h1>Cars</h1>
         <div class="row">
             @forelse ($cars as $car)
                 <div class="col-md-4 col-sm-6 mb-4">
@@ -19,7 +19,10 @@
                     </div>
                 </div>
             @empty
-                <p>No cars available.</p>
+            <div>
+                <h3>No cars found</h3>
+                <img src="{{asset('no-car-icon.svg')}}" alt="icon not loaded" style="width: 400px; height: 400px;">
+            </div>
             @endforelse
 
             {{$cars->links()}}

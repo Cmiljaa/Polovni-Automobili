@@ -39,7 +39,9 @@ class UserController extends Controller
 
         $validatedData['password'] = bcrypt($validatedData['password']);
 
-        User::create($validatedData);
+        $user = User::create($validatedData);
+
+        Auth::login($user);
         
         return redirect(route('cars.index'))->with('success', 'Successfully created profile!');
     }

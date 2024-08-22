@@ -27,7 +27,7 @@ class CarFactory extends Factory
             'model' => fake()->word(),
             'price' => fake()->numberBetween(5000, 100000),
             'mileage' => fake()->numberBetween(25000, 300000),
-            'fuel' => fake()->randomElement(['diesel', 'petrol', 'electric, hybrid']),
+            'fuel' => fake()->randomElement(['diesel', 'petrol', 'electric', 'hybrid']),
             'year' => fake()->year(),
             'body_type' => fake()->randomElement(['crossover', 'convertible', 'coupe', 'hatchback', 'sedan', 'sports_car', 'suv', 'truck', 'van', 'wagon']),
             'allowed' => true,
