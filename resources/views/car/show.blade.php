@@ -20,13 +20,14 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myLargeModalLabel">{{$car->brand}}  {{$car->model}}</h5>
+                    <h5 class="modal-title" id="myLargeModalLabel">{{$car->brand}} {{$car->model}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <img src="{{ asset($car->image) }}" alt="{{ $car->image }}" class="img-fluid">
+                <div class="modal-body d-flex justify-content-center align-items-center">
+                    <img src="{{ asset($car->image) }}" alt="{{ $car->image }}" class="img-fluid centered-image">
                 </div>
             </div>
         </div>
     </div>
+    
 @endsection
