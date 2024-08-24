@@ -27,11 +27,10 @@ class CarFactory extends Factory
             'model' => fake()->word(),
             'price' => fake()->numberBetween(5000, 100000),
             'mileage' => fake()->numberBetween(25000, 300000),
-            'fuel' => fake()->randomElement(['diesel', 'petrol', 'electric', 'hybrid']),
+            'fuel' => fake()->randomElement(['Diesel', 'Petrol', 'Electric', 'Hybrid']),
             'year' => fake()->year(),
-            'body_type' => fake()->randomElement(['crossover', 'convertible', 'coupe', 'hatchback', 'sedan', 'sports_car', 'suv', 'truck', 'van', 'wagon']),
-            'allowed' => true,
-            'image' => fake()->imageUrl()
+            'body_type' => fake()->randomElement(['Crossover', 'Convertible', 'Coupe', 'Hatchback', 'Sedan', 'Sports_car', 'Suv', 'Truck', 'Van', 'Wagon']),
+            'allowed' => true
         ];
     }
 }

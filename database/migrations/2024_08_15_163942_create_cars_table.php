@@ -24,7 +24,6 @@ return new class extends Migration
             $table->year('year');
             $table->string('body_type');
             $table->boolean('allowed')->default(0);
-            $table->string('image');
 
             $table->timestamps();
         });
