@@ -1,9 +1,10 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="basic-container" style="max-width: 80%; border: 0px; margin-top: 20px;">
         <div class="row">
             <div class="col-md-6 position-relative">
-                <img src="{{ asset($car->image) }}" alt="{{ $car->image }}" class="img-fluid zoom-icon" style="max-width: 100%;" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">
+                <img src="{{ asset($car->carimages->first()->image) }}" alt="{{ $car->carimages->first()->image }}" class="img-fluid zoom-icon" style="max-width: 100%;" data-bs-toggle="modal" data-bs-target="#largeModal">
                 <i class="fa fa-search-plus zoom-icon-overlay"></i>
             </div>
             <div class="col-md-6" style="font-size: 18px">
@@ -16,18 +17,44 @@
             </div>
         </div>
     </div>
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myLargeModalLabel">{{$car->brand}} {{$car->model}}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex justify-content-center align-items-center">
-                    <img src="{{ asset($car->image) }}" alt="{{ $car->image }}" class="img-fluid centered-image">
+
+    <div class="container">
+        <div class="modal fade" id="largeModal" tabindex="-1" aria-labelledby="largeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="carouselExampleIndicators" class="carousel slide">
+                            <div class="carousel-indicators">
+                                @foreach ($car->carimages as $index => $image)
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $loop->first ? 'active' : '' }}" aria-current="{{ $loop->first ? 'true' : 'false' }}" aria-label="Slide {{ $index + 1 }}"></button>
+                                @endforeach
+                            </div>
+                            <div class="carousel-inner">
+                                @forelse ($car->carimages as $index => $image)
+                                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                                        <img src="{{ asset($image->image) }}" alt="{{ $image->image }}" class="d-block w-100">
+                                    </div>
+                                @empty
+                                    <div class="carousel-item active">
+                                        <p>No images available</p>
+                                    </div>
+                                @endforelse
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
 @endsection
