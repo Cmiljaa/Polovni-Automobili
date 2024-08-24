@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver;
+
 
 class CarController extends Controller
 {
@@ -49,9 +52,17 @@ class CarController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
+        
+            $manager = new ImageManager(new Driver());
 
-            $file->move(public_path('images'), $filename);
-    
+            $image = $manager->read($file->getRealPath());
+
+            $watermark = $manager->read(public_path('images/watermark.png'));
+
+            $image = $image->place($watermark, 'center');
+
+            $image->save(public_path('images/' . $filename));
+
             $validatedData['image'] = 'images/' . $filename;
         }
 
