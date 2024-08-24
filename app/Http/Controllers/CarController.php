@@ -57,13 +57,13 @@ class CarController extends Controller
 
             $image = $manager->read($file->getRealPath());
 
-            $watermark = $manager->read(public_path('images/watermark.png'));
+            $watermark = $manager->read(public_path('storage/images/watermark.png'));
 
             $image = $image->place($watermark, 'center');
 
-            $image->save(public_path('images/' . $filename));
+            $image->save(public_path('storage/images/' . $filename));
 
-            $validatedData['image'] = 'images/' . $filename;
+            $validatedData['image'] = 'storage/images/' . $filename;
         }
 
         Car::create($validatedData);
@@ -111,13 +111,13 @@ class CarController extends Controller
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
 
-            $file->move(public_path('images'), $filename);
+            $file->move(public_path('storage/images'), $filename);
 
             if (File::exists(public_path($car->image))) {
                 File::delete(public_path($car->image));
             }
     
-            $validatedData['image'] = 'images/' . $filename;
+            $validatedData['image'] = 'storage/images/' . $filename;
         }
 
         $car->update($validatedData);

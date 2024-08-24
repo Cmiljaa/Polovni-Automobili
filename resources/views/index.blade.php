@@ -9,7 +9,7 @@
             @forelse ($cars as $car)
                 <div class="col-md-4 col-sm-6 mb-4">
                     <div class="car-card">
-                        <img src="{{asset($car->image)}}" alt="Photo not loaded">
+                        <img src="{{ asset($car->image) }}" alt="Photo not loaded">
                     </div>
                     <div class="car-card-body">
                         <h5>{{$car->brand}}</h5>
@@ -21,7 +21,7 @@
             @empty
             <div>
                 <h3>No cars found</h3>
-                <img src="{{asset('icons/no-car-icon.svg')}}" alt="icon not loaded" style="width: 400px; height: 400px;">
+                <img src="{{ asset('storage/icons/car-svgrepo-com.svg') }}" alt="icon not loaded" style="width: 400px; height: 400px;">
             </div>
             @endforelse
 

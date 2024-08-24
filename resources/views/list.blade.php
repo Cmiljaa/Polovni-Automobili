@@ -24,7 +24,7 @@
             @empty
                 <div>
                     <h3>No cars found</h3>
-                    <img src="{{asset('icons/no-car-icon.svg')}}" alt="icon not loaded" style="width: 400px; height: 400px;">
+                    <img src="{{asset('storage/icons/no-car-icon.svg')}}" alt="icon not loaded" style="width: 400px; height: 400px;">
                 </div>
             @endforelse
 
