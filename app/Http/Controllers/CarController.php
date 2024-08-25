@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Models\CarImage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
+
 
 
 class CarController extends Controller
@@ -17,7 +19,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::latest()->paginate(12);
+        $cars = Car::latest()->with('carimages')->paginate(12);
 
         return view('index', ['cars' => $cars]);
 
@@ -44,29 +46,35 @@ class CarController extends Controller
             'mileage' => 'required|max:2000000',
             'model' => 'required|max:50',
             'body_type' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $validatedData['user_id'] = Auth::id();
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-        
+        $car = Car::create($validatedData);
+        $carId = $car->id;
+
+        $images = $request->images;
+        foreach ($images as $image) {
+            $fileOriginalName = $image->getClientOriginalExtension();
+            $fileNewName = time() .'.'. $fileOriginalName;
+            $image->storeAs('images', $fileNewName, 'public');
+
             $manager = new ImageManager(new Driver());
 
-            $image = $manager->read($file->getRealPath());
+            $image = $manager->read($image->getRealPath());
 
             $watermark = $manager->read(public_path('storage/images/watermark.png'));
 
             $image = $image->place($watermark, 'center');
 
-            $image->save(public_path('storage/images/' . $filename));
+            $image->save(public_path('storage/images/' . $fileNewName));
 
-            $validatedData['image'] = 'storage/images/' . $filename;
+            CarImage::create([
+                'car_id' => $carId,
+                'image' => 'storage/images/' . $fileNewName
+            ]);
         }
-
-        Car::create($validatedData);
 
         return redirect(route('cars.index'))->with('success', 'Successfully created car!');
         
@@ -77,7 +85,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        $car->load('user');
+        $car->load('user')->with('carimages');
         return view('car.show', ['car' => $car]);
     }
 

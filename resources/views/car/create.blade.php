@@ -50,12 +50,13 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="image">Add Photo</label>
-                    <input type="file" id="image" name="image" class="form-control">
-                    @error('image')
-                        <p class="text-danger">{{$message}}</p>
+                    <label for="images">Add Photos</label>
+                    <input type="file" id="images" name="images[]" class="form-control" required accept="image/*" multiple>
+                    @error('images.*')
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
+                
                 <button type="submit" class="btn btn-primary w-100">Add Car</button>
             </form>
     </div>

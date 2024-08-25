@@ -4,7 +4,7 @@
     <div class="basic-container" style="max-width: 80%; border: 0px; margin-top: 20px;">
         <div class="row">
             <div class="col-md-6 position-relative">
-                <img src="{{ asset($car->carimages->first()->image) }}" alt="{{ $car->carimages->first()->image }}" class="img-fluid zoom-icon" style="max-width: 100%;" data-bs-toggle="modal" data-bs-target="#largeModal">
+                <img src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" alt="Image not loaded" class="img-fluid zoom-icon" style="max-width: 100%;" data-bs-toggle="modal" data-bs-target="#largeModal">
                 <i class="fa fa-search-plus zoom-icon-overlay"></i>
             </div>
             <div class="col-md-6" style="font-size: 18px">
@@ -36,7 +36,7 @@
                                     </div>
                                 @empty
                                     <div class="carousel-item active">
-                                        <p>No images available</p>
+                                        <img src="{{ asset('storage/images/default.png') }}" alt="{{asset('storage/images/default.png')}}" class="d-block w-100">
                                     </div>
                                 @endforelse
                             </div>
