@@ -147,8 +147,11 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-        if (File::exists(public_path($car->image))) {
-            File::delete(public_path($car->image));
+        $car = $car->load('carimages');
+        foreach($car->carimages as $image){
+            if (File::exists(public_path($image->image))){
+                File::delete(public_path($image->image));
+            }
         }
         $car->delete();
         return redirect(route('user.list'))->with('success', 'Successfully deleted car!');
