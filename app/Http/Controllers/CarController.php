@@ -55,14 +55,23 @@ class CarController extends Controller
         $carId = $car->id;
 
         $images = $request->images;
+        
+
         foreach ($images as $image) {
-            $fileOriginalName = $image->getClientOriginalExtension();
+            $fileOriginalName = $image->getClientOriginalName();
+
             $fileNewName = time() .'.'. $fileOriginalName;
+
             $image->storeAs('images', $fileNewName, 'public');
 
             $manager = new ImageManager(new Driver());
 
             $image = $manager->read($image->getRealPath());
+
+            $resizedImage = $image->resize(1440, 1080, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
 
             $watermark = $manager->read(public_path('storage/images/watermark.png'));
 
