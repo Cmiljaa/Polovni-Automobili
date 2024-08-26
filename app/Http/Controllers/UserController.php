@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('registration');
+        return view('user.registration');
     }
 
     /**
@@ -91,7 +91,7 @@ class UserController extends Controller
     }
 
     public function login(){
-        return view('login');
+        return view('user.login');
     }
 
     public function handleLogin(Request $request){
@@ -105,7 +105,7 @@ class UserController extends Controller
             return redirect(route('cars.index'))->with('success', 'Successfully logged in!');
         }
 
-        return view('login', ['email' => 'Invalid credentials']);
+        return view('user.login', ['email' => 'Invalid credentials']);
     }
 
     public function logout(Request $request){
@@ -118,9 +118,9 @@ class UserController extends Controller
     }
 
     public function list(){
-
+        
         $cars = Car::where('user_id', Auth::id())->latest()->paginate(12);
 
-        return view('list', ['cars' => $cars]);
+        return view('user.list', ['cars' => $cars]);
     }
 }

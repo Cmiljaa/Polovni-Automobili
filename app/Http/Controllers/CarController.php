@@ -21,7 +21,7 @@ class CarController extends Controller
     {
         $cars = Car::latest()->with('carimages')->paginate(12);
 
-        return view('index', ['cars' => $cars]);
+        return view('car.index', ['cars' => $cars]);
 
     }
 
@@ -109,7 +109,7 @@ class CarController extends Controller
 
         $cars = $query->latest()->paginate(12);
 
-        return view('index', ['cars' => $cars]); 
+        return view('car.index', ['cars' => $cars]); 
     }
 
     public function deleteImages($images){
