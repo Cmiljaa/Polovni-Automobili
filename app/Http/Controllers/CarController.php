@@ -55,8 +55,10 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        $car->load('user')->with('carimages');
-        return view('car.show', ['car' => $car]);
+        $car->load(['user', 'carimages']);
+        $cars = Car::where('user_id', $car->user_id)->with('carimages')
+        ->inRandomOrder()->limit(9)->get();
+        return view('car.show', ['car' => $car, 'cars' => $cars]);
     }
 
     /**
