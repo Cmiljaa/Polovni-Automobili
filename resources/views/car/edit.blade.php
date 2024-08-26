@@ -51,9 +51,9 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="image">Update Photo</label>
-                <input type="file" id="image" name="image" class="form-control">
-                @error('image')
+                <label for="images">Add Photos</label>
+                <input type="file" id="images" name="images[]" class="form-control" required accept="image/*" multiple>
+                @error('images.*')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>

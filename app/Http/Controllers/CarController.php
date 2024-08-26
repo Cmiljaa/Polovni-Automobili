@@ -38,52 +38,13 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'brand' => 'required',
-            'price' => 'required|max:1000000',
-            'fuel' => 'required',
-            'year' => 'required',
-            'mileage' => 'required|max:2000000',
-            'model' => 'required|max:50',
-            'body_type' => 'required',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
+        $validatedData = $this->validateData($request);
 
         $validatedData['user_id'] = Auth::id();
 
         $car = Car::create($validatedData);
-        $carId = $car->id;
-
-        $images = $request->images;
         
-
-        foreach ($images as $image) {
-            $fileOriginalName = $image->getClientOriginalName();
-
-            $fileNewName = time() .'.'. $fileOriginalName;
-
-            $image->storeAs('images', $fileNewName, 'public');
-
-            $manager = new ImageManager(new Driver());
-
-            $image = $manager->read($image->getRealPath());
-
-            $resizedImage = $image->resize(1440, 1080, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-
-            $watermark = $manager->read(public_path('storage/images/watermark.png'));
-
-            $image = $image->place($watermark, 'center');
-
-            $image->save(public_path('storage/images/' . $fileNewName));
-
-            CarImage::create([
-                'car_id' => $carId,
-                'image' => 'storage/images/' . $fileNewName
-            ]);
-        }
+        $this->addImages($request->images, $car->id);
 
         return redirect(route('cars.index'))->with('success', 'Successfully created car!');
         
@@ -111,33 +72,15 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
-        $validatedData = $request->validate([
-            'brand' => 'required',
-            'price' => 'required|max:1000000',
-            'fuel' => 'required',
-            'year' => 'required',
-            'mileage' => 'required|max:2000000',
-            'model' => 'required|max:50',
-            'body_type' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
-        ]);
+        $validatedData = $this->validateData($request);
 
         $validatedData['user_id'] = Auth::id();
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-
-            $file->move(public_path('storage/images'), $filename);
-
-            if (File::exists(public_path($car->image))) {
-                File::delete(public_path($car->image));
-            }
-    
-            $validatedData['image'] = 'storage/images/' . $filename;
-        }
-
         $car->update($validatedData);
+
+        $this->deleteImages($car->carimages);
+
+        $this->addImages($request->images, $car->id);
 
         return redirect(route('user.list'))->with('success', 'Successfully updated car!');
     }
@@ -148,11 +91,7 @@ class CarController extends Controller
     public function destroy(Car $car)
     {
         $car = $car->load('carimages');
-        foreach($car->carimages as $image){
-            if (File::exists(public_path($image->image))){
-                File::delete(public_path($image->image));
-            }
-        }
+        $this->deleteImages($car->carimages);
         $car->delete();
         return redirect(route('user.list'))->with('success', 'Successfully deleted car!');
     }
@@ -211,5 +150,18 @@ class CarController extends Controller
                 'image' => 'storage/images/' . $fileNewName
             ]);
         }
+    }
+
+    public function validateData(Request $request){
+        return $request->validate([
+            'brand' => 'required',
+            'price' => 'required|max:1000000',
+            'fuel' => 'required',
+            'year' => 'required',
+            'mileage' => 'required|max:2000000',
+            'model' => 'required|max:50',
+            'body_type' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+        ]);
     }
 }
