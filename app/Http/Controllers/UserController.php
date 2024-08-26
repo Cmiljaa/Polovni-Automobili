@@ -59,15 +59,27 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:80|min:8', 
+            'email' => 'required|email',
+            'phone' => 'required|min:5|max:15',
+            'password' => 'required|min:8|same:confirm_password'
+        ]);
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        $user->update($validatedData);
+
+        return redirect(route('cars.index'))->with('success', 'Successfully updated profile!');
     }
 
     /**
