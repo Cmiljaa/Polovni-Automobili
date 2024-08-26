@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\CarImage;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,5 +27,13 @@ class DatabaseSeeder extends Seeder
                 ]);
             });
         });
+
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'phone' => '1234567890',
+            'password' => Hash::make('admin123'),
+            'is_admin' => true
+        ]);
     }
 }
