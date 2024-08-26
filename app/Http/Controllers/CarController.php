@@ -170,4 +170,46 @@ class CarController extends Controller
 
         return view('index', ['cars' => $cars]); 
     }
+
+    public function deleteImages($images){
+        foreach($images as $image){
+            if (File::exists(public_path($image->image))){
+                File::delete(public_path($image->image));
+            }
+            if($image->exists){
+                $image->delete();
+            }
+        }
+    }
+
+    public function addImages($images, $carId)
+    {
+        foreach ($images as $image) {
+            $fileOriginalName = $image->getClientOriginalName();
+
+            $fileNewName = time() .'.'. $fileOriginalName;
+
+            $image->storeAs('images', $fileNewName, 'public');
+
+            $manager = new ImageManager(new Driver());
+
+            $image = $manager->read($image->getRealPath());
+
+            $resizedImage = $image->resize(1440, 1080, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $watermark = $manager->read(public_path('storage/images/watermark.png'));
+
+            $image = $image->place($watermark, 'center');
+
+            $image->save(public_path('storage/images/' . $fileNewName));
+
+            CarImage::create([
+                'car_id' => $carId,
+                'image' => 'storage/images/' . $fileNewName
+            ]);
+        }
+    }
 }
