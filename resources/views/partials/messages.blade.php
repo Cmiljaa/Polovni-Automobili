@@ -10,7 +10,7 @@
 @if (session('error'))
 <div class="message-container">
     <div class="alert alert-danger alert-dismissible fade show">
-        {{ session('error') }}
+        <strong>{{ session('error') }}</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 </div>

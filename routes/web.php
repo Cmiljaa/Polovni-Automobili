@@ -32,3 +32,7 @@ Route::resource('user', UserController::class);
 Route::get('/cars/create', [CarController::class, 'create'])
 ->middleware('auth')
 ->name('cars.create');
+
+Route::get('admin', function(){
+    return "hello admin";
+})->middleware('admin');

@@ -102,6 +102,9 @@ class UserController extends Controller
 
         if(Auth::attempt($validatedData)){
             $request->session()->regenerate();
+            if(Auth::user()->is_admin){
+                return redirect('/admin');
+            }
             return redirect(route('cars.index'))->with('success', 'Successfully logged in!');
         }
 
