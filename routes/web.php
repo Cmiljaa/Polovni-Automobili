@@ -34,5 +34,6 @@ Route::get('/cars/create', [CarController::class, 'create'])
 ->name('cars.create');
 
 Route::get('admin', function(){
-    return "hello admin";
-})->middleware('admin');
+    return view('admin.dashboard');
+})->middleware('admin')
+->name('admin.dashboard');

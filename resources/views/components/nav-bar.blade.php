@@ -6,8 +6,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            
-            @if(Auth::check())
+
+            @if (Auth::check() && Auth::user()->is_admin)
+                <div class="d-flex">
+                    <a href="/admin" class="me-2">
+                        <button class="btn btn-primary">Dashboard</button>
+                    </a>
+                    <form action="{{route('user.logout')}}" method="POST">
+                        @csrf
+                        <button class="btn btn-danger" type="submit">Logout</button>
+                    </form>
+                </div>
+            @elseif (Auth::check())
                 <div class="d-flex">
                     <a href="{{route('user.edit', Auth::id())}}" class="me-2">
                         <button class="btn btn-info">Your Profile</button>
