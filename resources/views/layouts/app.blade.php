@@ -149,6 +149,36 @@
         width: 30px;
         height: 48px;
     }
+    .intro {
+    height: 100%;
+    }
+
+    table td,
+    table th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+
+    thead th {
+    color: #fff;
+    }
+
+    .card {
+    border-radius: .5rem;
+    }
+
+    .table-scroll {
+    border-radius: .5rem;
+    }
+
+    .table-scroll table thead th {
+    font-size: 1.25rem;
+    }
+    thead {
+    top: 0;
+    position: sticky;
+    }
     </style>
     
 </head>

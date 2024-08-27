@@ -14,7 +14,11 @@ class AdminController extends Controller
         return view('admin.dashboard', ['cars' => $cars, 'users' => $users]);
     }
 
-    public function allow(){
-
+    public function allow(Car $car, string $bool){
+        $bool = filter_var($bool, FILTER_VALIDATE_BOOLEAN);
+        $car->allowed = $bool;
+        $car->save();
+        $allow = $bool ? "allowed" : "unallowed";
+        return redirect(route('admin.dashboard'))->with('success', "Successfully $allow car!");
     }
 }
