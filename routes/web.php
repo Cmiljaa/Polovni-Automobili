@@ -14,7 +14,7 @@ Route::middleware('admin')->group(function(){
     Route::get('admin', [AdminController::class, 'index'])
     ->name('admin.dashboard');
 
-    Route::put('allow/cars/{car}/{bool}', [AdminController::class, 'allow'])
+    Route::put('allow/cars/{car}/{allowed}', [AdminController::class, 'allow'])
     ->name('admin.allow');
 });
 

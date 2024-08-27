@@ -9,16 +9,16 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function index(){
-        $users = User::latest()->get();
+        $users = User::where('is_admin', false)->latest()->get();
         $cars = Car::latest()->get();
         return view('admin.dashboard', ['cars' => $cars, 'users' => $users]);
     }
 
-    public function allow(Car $car, string $bool){
-        $bool = filter_var($bool, FILTER_VALIDATE_BOOLEAN);
-        $car->allowed = $bool;
+    public function allow(Car $car, string $allowed){
+        $allowed = filter_var($allowed, FILTER_VALIDATE_BOOLEAN);
+        $car->allowed = $allowed;
         $car->save();
-        $allow = $bool ? "allowed" : "unallowed";
+        $allow = $allowed ? "allowed" : "unallowed";
         return redirect(route('admin.dashboard'))->with('success', "Successfully $allow car!");
     }
 }

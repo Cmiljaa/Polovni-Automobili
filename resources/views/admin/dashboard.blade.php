@@ -23,7 +23,13 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->phone }}</td>
-                                        <td>DELETE</td>
+                                        <td>
+                                            <form action="{{route('user.destroy', $user)}}" method="POST" class="btn p-0 border-0">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" type="submit">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>
@@ -69,7 +75,7 @@
                                         <td>{{ $car->body_type }}</td>
                                         @if($car->allowed != 0)
                                             <td>
-                                                <form action="{{ route('admin.allow', ['car' => $car, 'bool' => 'false']) }}" method="POST" class="btn p-0 border-0">
+                                                <form action="{{ route('admin.allow', ['car' => $car, 'allowed' => 'false']) }}" method="POST" class="btn p-0 border-0">
                                                     @csrf
                                                     @method('PUT')
                                                     <button class="btn btn-danger" type="submit">Unallow</button>
@@ -77,7 +83,7 @@
                                             </td>
                                         @else
                                             <td>
-                                                <form action="{{ route('admin.allow', ['car' => $car, 'bool' => 'true']) }}" method="POST" class="btn p-0 border-0">
+                                                <form action="{{ route('admin.allow', ['car' => $car, 'allowed' => 'true']) }}" method="POST" class="btn p-0 border-0">
                                                     @csrf
                                                     @method('PUT')
                                                     <button class="btn btn-primary" type="submit">Allow</button>
