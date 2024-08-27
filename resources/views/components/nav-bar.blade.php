@@ -9,7 +9,7 @@
 
             @if (Auth::check() && Auth::user()->is_admin)
                 <div class="d-flex">
-                    <a href="/admin" class="me-2">
+                    <a href="{{route('admin.dashboard')}}" class="me-2">
                         <button class="btn btn-primary">Dashboard</button>
                     </a>
                     <form action="{{route('user.logout')}}" method="POST">

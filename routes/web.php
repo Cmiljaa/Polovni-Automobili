@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -8,6 +9,14 @@ Route::redirect('/', '/cars');
 
 Route::get('/cars/filter', [CarController::class, 'filter'])
 ->name('cars.filter');
+
+Route::middleware('admin')->group(function(){
+    Route::get('admin', [AdminController::class, 'index'])
+    ->name('admin.dashboard');
+
+    Route::put('allow', [AdminController::class, 'allow'])
+    ->name('admin.allow');
+});
 
 Route::middleware('auth')->group(function(){
     Route::get('/user/list', [UserController::class, 'list'])
@@ -32,8 +41,3 @@ Route::resource('user', UserController::class);
 Route::get('/cars/create', [CarController::class, 'create'])
 ->middleware('auth')
 ->name('cars.create');
-
-Route::get('admin', function(){
-    return view('admin.dashboard');
-})->middleware('admin')
-->name('admin.dashboard');
