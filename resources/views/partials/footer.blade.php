@@ -2,7 +2,7 @@
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-3 text-center">
-                <h5 class="text-uppercase mb-4">Resources</h5>
+                <h5 class="text-uppercase mb-2">Resources</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">
                         <a href="https://laravel.com/" target="_blank" class="text-white">Laravel 11</a>
@@ -14,7 +14,7 @@
             </div>
 
             <div class="col-md-3 text-center">
-                <h5 class="text-uppercase mb-4">Legal</h5>
+                <h5 class="text-uppercase mb-2">Legal</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">
                         <a href="#" class="text-white">Privacy Policy</a>

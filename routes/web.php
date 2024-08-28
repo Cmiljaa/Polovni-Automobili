@@ -36,7 +36,8 @@ Route::middleware('guest')->group(function(){
 
 Route::resource('cars', CarController::class);
 
-Route::resource('user', UserController::class);
+Route::resource('user', UserController::class)
+->except(['index', 'show']);
 
 Route::get('/cars/create', [CarController::class, 'create'])
 ->middleware('auth')
