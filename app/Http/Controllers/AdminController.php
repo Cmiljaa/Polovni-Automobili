@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function index(){
-        $users = User::where('is_admin', false)->latest()->get();
-        $cars = Car::latest()->get();
+        $users = User::orderBy('name', 'asc')->where('is_admin', false)->latest()->get();
+        $cars = Car::orderBy('allowed', 'asc')->orderBy('brand', 'asc')->orderBy('created_at', 'desc')->get();
         return view('admin.dashboard', ['cars' => $cars, 'users' => $users]);
     }
 

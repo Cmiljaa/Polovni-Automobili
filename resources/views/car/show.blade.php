@@ -7,7 +7,7 @@
                 <img src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" alt="Image not loaded" class="img-fluid zoom-icon" style="max-width: 100%;" data-bs-toggle="modal" data-bs-target="#largeModal">
                 <i class="fa fa-search-plus zoom-icon-overlay"></i>
             </div>
-            <div class="col-md-6" style="font-size: 18px">
+            <div class="col-md-6" style="font-size: 18px; margin-top: 10px;">
                 <h3>{{ $car->brand }}</h3>
                 <p><strong>Price:</strong> {{ number_format($car->price, 0, '', '.') }} €</p>
                 <p><strong>Year:</strong> {{ $car->year }}</p>

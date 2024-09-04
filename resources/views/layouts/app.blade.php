@@ -88,8 +88,7 @@
     .message-container {
         display: flex;
         justify-content: center;
-        margin-top: 20px;
-        margin-bottom: -20px;
+        margin: 20px auto -20px;
     }
 
     .alert {
