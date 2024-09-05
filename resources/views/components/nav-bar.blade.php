@@ -5,44 +5,44 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <ul class="navbar-nav me-auto mb-lg-0"></ul>
 
-            @if (Auth::check() && Auth::user()->is_admin)
-                <div class="d-flex">
-                    <a href="{{route('admin.dashboard')}}" class="me-2">
-                        <button class="btn btn-primary">Dashboard</button>
-                    </a>
-                    <form action="{{route('user.logout')}}" method="POST">
-                        @csrf
-                        <button class="btn btn-danger" type="submit">Logout</button>
-                    </form>
-                </div>
-            @elseif (Auth::check())
-                <div class="d-flex">
-                    <a href="{{route('user.edit', Auth::id())}}" class="me-2">
-                        <button class="btn btn-info">Your Profile</button>
-                    </a>
-                    <a href="{{route('user.list')}}" class="me-2">
-                        <button class="btn btn-primary">Your Cars</button>
-                    </a>
-                    <a href="{{route('cars.create')}}" class="me-2">
-                        <button class="btn btn-warning">Add New Car</button>
-                    </a>
-                    <form action="{{route('user.logout')}}" method="POST">
-                        @csrf
-                        <button class="btn btn-danger" type="submit">Logout</button>
-                    </form>
-                </div>
-            @else
-                <div class="d-flex">
-                    <a href="{{route('login')}}" class="me-2">
-                        <button class="btn btn-success">Login</button>
-                    </a>
-                    <a href="{{route('user.create')}}">
-                        <button class="btn btn-primary">Register</button>
-                    </a>
-                </div>
-            @endif
+            <ul class="navbar-nav ms-auto">
+                @if (Auth::check() && Auth::user()->is_admin)
+                    <li class="nav-item">
+                        <a href="{{route('admin.dashboard')}}" class="btn btn-primary me-2 m-1">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{{route('user.logout')}}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger m-1" type="submit">Logout</button>
+                        </form>
+                    </li>
+                @elseif (Auth::check())
+                    <li class="nav-item">
+                        <a href="{{route('user.edit', Auth::id())}}" class="btn btn-info me-2 m-1">Your Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('user.list')}}" class="btn btn-primary me-2 m-1">Your Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('cars.create')}}" class="btn btn-warning me-2 m-1">Add New Car</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{{route('user.logout')}}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger m-1" type="submit">Logout</button>
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a href="{{route('login')}}" class="btn btn-success me-2 m-1">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('user.create')}}" class="btn btn-primary m-1">Register</a>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>
