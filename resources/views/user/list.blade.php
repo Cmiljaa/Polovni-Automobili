@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="car-container">
-        <h1>Cars</h1>
+        <h1>Your Cars</h1>
         <div class="row">
             @forelse ($cars as $car)
                 <div class="col-md-4 col-sm-6 mb-4">
