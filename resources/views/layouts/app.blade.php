@@ -225,6 +225,66 @@
         position: sticky;
     }
 
+    .legal-container {
+        max-width: 1100px;
+        margin: 35px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .legal-container h1 {
+        font-size: 36px;
+        margin-bottom: 25px;
+        text-align: center;
+        color: #333;
+    }
+
+    .legal-div {
+        margin: 36px 0;
+        line-height: 1.8;
+    }
+
+    .legal-div h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #444;
+    }
+
+    .legal-div h4 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    .legal-div p {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #606060;
+    }
+
+    @media (max-width: 768px) {
+        .legal-container {
+            padding: 15px;
+        }
+
+        .legal-container h1 {
+            font-size: 28px;
+        }
+
+        .legal-div h2 {
+            font-size: 22px;
+        }
+
+        .legal-div h4 {
+            font-size: 18px;
+        }
+
+        .legal-div p {
+            font-size: 16px;
+        }
+    }
     </style>
     
 </head>

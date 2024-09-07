@@ -17,10 +17,10 @@
                 <h5 class="text-uppercase mb-2">Legal</h5>
                 <ul class="list-unstyled">
                     <li class="mb-2">
-                        <a href="#" class="text-white">Privacy Policy</a>
+                        <a href="{{route('legal.privacy_policy')}}" class="text-white">Privacy Policy</a>
                     </li>
                     <li>
-                        <a href="#" class="text-white">Terms & Conditions</a>
+                        <a href="{{route('legal.terms_conditions')}}" class="text-white">Terms & Conditions</a>
                     </li>
                 </ul>
             </div>

@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/cars');
 
+Route::get('/legal/privacy_policy', function(){
+    return view('partials.privacy_policy');
+})->name('legal.privacy_policy');
+
+Route::get('/legal/terms_conditions', function(){
+    return view('partials.terms_conditions');
+})->name('legal.terms_conditions');
+
 Route::get('/cars/filter', [CarController::class, 'filter'])
 ->name('cars.filter');
 
