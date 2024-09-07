@@ -8,8 +8,10 @@
                 <i class="fa fa-search-plus zoom-icon-overlay"></i>
             </div>
             <div class="col-md-6" style="font-size: 18px; margin-top: 10px;">
-                <h3>{{ $car->brand }}</h3>
+                <h3>{{$car->brand}} {{$car->model}}</h3>
                 <p><strong>Price:</strong> {{ number_format($car->price, 0, '', '.') }} €</p>
+                <p><strong>Model:</strong> {{$car->model}}</p>
+                <p><strong>Mileage:</strong> {{number_format($car->mileage, 0, '', '.')}} km</p>
                 <p><strong>Year:</strong> {{ $car->year }}</p>
                 <p><strong>Fuel:</strong> {{ Str::ucfirst($car->fuel) }}</p>
                 <p><strong>Body Type:</strong> {{ Str::ucfirst($car->body_type) }}</p>
@@ -57,6 +59,7 @@
             </div>
         </div>
     </div>
+    
     <div class="car-container">
         <h3>More Cars From This User</h3>
         <div class="row">
@@ -66,7 +69,7 @@
                         <img  src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" alt="Image not loaded">
                     </div>
                     <div class="car-card-body">
-                        <h5>{{$car->brand}}</h5>
+                        <h5>{{$car->brand}} {{$car->model}}</h5>
                         <p>{{number_format($car->price, 0, '', '.')}} €</p>
                         <p>{{$car->year}}</p>
                         <a href="{{route('cars.show', $car)}}"><button class="btn btn-show">See More</button></a>

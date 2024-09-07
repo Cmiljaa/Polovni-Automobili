@@ -12,7 +12,7 @@
                         <img  src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" alt="Image not loaded">
                     </div>
                     <div class="car-card-body">
-                        <h5>{{$car->brand}}</h5>
+                        <h5>{{$car->brand}} {{$car->model}}</h5>
                         <p>{{number_format($car->price, 0, '', '.')}} €</p>
                         <p>{{$car->year}}</p>
                         <a href="{{route('cars.show', $car)}}"><button class="btn btn-show">See More</button></a>

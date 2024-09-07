@@ -45,7 +45,7 @@ class CarController extends Controller
         
         $this->addImages($request->images, $car->id);
 
-        return redirect(route('cars.index'))->with('success', 'Successfully created car!');
+        return redirect(route('cars.index'))->with('success', 'Your car has been successfully submitted! It will be reviewed and approved by our team within the next few hours.');
         
     }
 
@@ -55,7 +55,7 @@ class CarController extends Controller
     public function show(Car $car)
     {
         $car->load(['user', 'carimages']);
-        $cars = Car::where('user_id', $car->user_id)->with('carimages')
+        $cars = Car::where('user_id', $car->user_id)->where('allowed', true)
         ->inRandomOrder()->limit(9)->get();
         return view('car.show', ['car' => $car, 'cars' => $cars]);
     }
@@ -106,7 +106,7 @@ class CarController extends Controller
 
         $query->ByYear($request->input('year_from'), $request->input('year_to'));
 
-        $cars = $query->latest()->paginate(12);
+        $cars = $query->where('allowed', true)->latest()->paginate(12);
 
         return view('car.index', ['cars' => $cars]); 
     }
@@ -135,7 +135,7 @@ class CarController extends Controller
 
             $image = $manager->read($image->getRealPath());
 
-            $resizedImage = $image->resize(1440, 1080, function ($constraint) {
+            $image->resize(1440, 1080, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
