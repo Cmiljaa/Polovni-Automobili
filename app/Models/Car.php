@@ -54,4 +54,10 @@ class Car extends Model
 
         return $query;
     }
+
+    public function scopeSort($query, $sort){
+        $sort = $sort ? $sort : "created_at,desc";
+        $sort = explode(',', $sort);
+        return $query->orderBy($sort[0], $sort[1]);
+    }
 }

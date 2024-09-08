@@ -106,9 +106,11 @@ class CarController extends Controller
 
         $query->ByYear($request->input('year_from'), $request->input('year_to'));
 
-        $cars = $query->where('allowed', true)->latest()->paginate(12);
+        $query->Sort($request->input('sort'));
 
-        return view('car.index', ['cars' => $cars]); 
+        $cars = $query->where('allowed', true)->paginate(12);
+
+        return view('car.index', ['cars' => $cars]);
     }
 
     public function deleteImages($images){
