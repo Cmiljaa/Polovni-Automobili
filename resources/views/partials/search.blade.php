@@ -4,21 +4,21 @@
         <form action="{{route('cars.filter')}}" method="GET">
             <div class="row mb-3">
                 <div class="col-md-4">
-                    @include('partials.brand')
+                    @include('partials.brand', ['selectedBrand' => request('brand')])
                 </div>
                 <div class="col-md-4">
-                    @include('partials.price', ['label'=>'Price up to'])
+                    @include('partials.price', ['label'=>'Price up to', 'selectedPrice' => request('price')])
                 </div>
                 <div class="col-md-4">
-                    @include('partials.fuel')
+                    @include('partials.fuel', ['selectedFuel' => request('fuel')])
                 </div>
             </div>
 
             <div class="row mb-3">
-                @include('partials.year_from')
-                @include('partials.year_to')
+                @include('partials.year_from', ['selectedYear' => request('year_from')])
+                @include('partials.year_to', ['selectedYear' => request('year_to')])
                 <div class="col-md-4">
-                    @include('partials.body_type')
+                    @include('partials.body_type', ['selectedBodyType' => request('body_type')])
                 </div>
             </div>
 
