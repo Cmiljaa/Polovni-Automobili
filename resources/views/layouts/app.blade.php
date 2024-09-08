@@ -285,6 +285,12 @@
             font-size: 16px;
         }
     }
+
+    .sort{
+        margin-bottom: 10px;
+        max-width: 25%;
+        min-width: 120px;
+    }
     </style>
     
 </head>
