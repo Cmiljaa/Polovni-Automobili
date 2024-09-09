@@ -5,22 +5,8 @@
 
     <div class="car-container">
         <h1>Cars</h1>
-        <form action="{{route('cars.filter')}}">
-            <input type="hidden" value="{{request('brand')}}">
-            <input type="hidden" value="{{request('price')}}">
-            <input type="hidden" value="{{request('fuel')}}">
-            <input type="hidden" value="{{request('year_from')}}">
-            <input type="hidden" value="{{request('year_to')}}">
-            <input type="hidden" value="{{request('body_type')}}">
-            <label for="sort" class="form-label">Sort by:</label>
-            <select name="sort" id="sort" class="form-select sort" onchange="this.form.submit()">
-                <option value="created_at,desc" selected>Latest</option>
-                <option value="price,asc">Price: Low to High</option>
-                <option value="price,desc">Price: High to Low</option>
-                <option value="year,asc">Year: Old to New</option>
-                <option value="year,desc">Year: New to Old</option>
-            </select>
-        </form>
+        @include('partials.sorting', ['selectedSort' => request('sort')])
+        
         <div class="row">
             @forelse ($cars as $car)
                 <div class="col-md-4 col-sm-6 mb-4">
