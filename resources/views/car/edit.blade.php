@@ -6,31 +6,31 @@
             <div class="mb-3">
                 @csrf
                 @method('PUT')
-                @include('partials.brand', ['selectedBrand' => $car->brand])
+                @include('car.parts.brand', ['selectedBrand' => $car->brand])
                 @error('brand')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-3">
-                @include('partials.model', ['selectedModel' => $car->model])
+                @include('car.parts.model', ['selectedModel' => $car->model])
                 @error('model')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-3">
-                @include('partials.mileage', ['selectedMileage' => $car->mileage])
+                @include('car.parts.mileage', ['selectedMileage' => $car->mileage])
                 @error('mileage')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-3">
-                @include('partials.price', ['label' => 'Price', 'selectedPrice' => $car->price])
+                @include('car.parts.price', ['label' => 'Price', 'selectedPrice' => $car->price])
                 @error('price')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-3">
-                @include('partials.fuel', ['selectedFuel' => $car->fuel])
+                @include('car.parts.fuel', ['selectedFuel' => $car->fuel])
                 @error('fuel')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
@@ -38,14 +38,14 @@
             <div class="mb-3">
                 <label for="year">Year</label>
                 <select name="year" id="year" class="form-control">
-                    @include('partials.all_years', ['selectedYear' => $car->year])
+                    @include('car.parts.all_years', ['selectedYear' => $car->year])
                 </select>
                 @error('year')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
             <div class="mb-3">
-                @include('partials.body_type', ['selectedBodyType' => $car->body_type])
+                @include('car.parts.body_type', ['selectedBodyType' => $car->body_type])
                 @error('body_type')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror

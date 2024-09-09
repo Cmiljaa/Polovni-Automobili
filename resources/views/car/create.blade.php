@@ -5,31 +5,31 @@
             <form action="{{route('cars.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    @include('partials.brand')
+                    @include('car.parts.brand')
                     @error('brand')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    @include('partials.model')
+                    @include('car.parts.model')
                     @error('model')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    @include('partials.mileage')
+                    @include('car.parts.mileage')
                     @error('mileage')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    @include('partials.price', ['label'=>'Price'])
+                    @include('car.parts.price', ['label'=>'Price'])
                     @error('price')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    @include('partials.fuel')
+                    @include('car.parts.fuel')
                     @error('fuel')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
@@ -37,14 +37,14 @@
                 <div class="mb-3">
                     <label for="year">Year</label>
                     <select name="year" id="year" class="form-control">
-                        @include('partials.all_years')
+                        @include('car.parts.all_years')
                     </select>
                     @error('year')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    @include('partials.body_type')
+                    @include('car.parts.body_type')
                     @error('body_type')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
