@@ -157,10 +157,17 @@ class CarController extends Controller
 
             $image = $manager->read($image->getRealPath());
 
-            $image->resize(1440, 1080, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            if($image->width()<$image->height()){
+                $image->resize(810, 1080, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+            }else{
+                $image->resize(1440, 1080, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+            }
 
             $watermark = $manager->read(public_path('storage/images/watermark.png'));
 
@@ -184,7 +191,7 @@ class CarController extends Controller
             'mileage' => 'required|max:2000000',
             'model' => 'required|max:50',
             'body_type' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg|max:4096',
         ]);
     }
 }

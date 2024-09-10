@@ -20,6 +20,54 @@
     .main-container {
         flex: 1;
     }
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain; 
+    }
+
+    .position-relative {
+        position: relative;
+    }
+
+    .image-box {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    overflow: hidden;
+    background: #f0f0f0; 
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        display: block;
+    }
+
+    .zoom-icon-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem;
+        color: rgba(255, 255, 255, 0.8);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .image-box:hover .zoom-icon-overlay {
+        opacity: 1;
+    }
+
+    .position-relative:hover .zoom-icon-overlay {
+        opacity: 1;
+    }
     
     .search-container {
         display: flex;
@@ -172,15 +220,6 @@
         overflow: hidden;
     }
 
-    .modal-content {
-        width: 700px;
-        border:none;
-    }
-
-    .modal-body {
-        padding: 0;
-    }
-
     .carousel-control-prev-icon {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
         width: 30px;
@@ -191,6 +230,31 @@
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
         width: 30px;
         height: 48px;
+    }
+
+    .carousel-item img {
+        max-width: 100%;
+        max-height: 79vh;
+        height: auto;
+        object-fit: contain; 
+    }
+
+    .modal-content {
+        max-width: 90vw;
+        width: auto;
+    }
+
+    .modal-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-body img {
+        max-width: 100%;
+        max-height: 80vh;
+        height: auto;
+        object-fit: contain;
     }
 
     .intro {
