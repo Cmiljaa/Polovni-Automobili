@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Models\CarImage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Imagick\Driver;
@@ -19,7 +20,16 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::latest()->where('allowed', true)->paginate(12);
+        $cacheKey = request()->get('page', 1) . Car::where('allowed', true)->count();
+
+        if(Cache::has($cacheKey)){
+            $cars = Cache::get($cacheKey);
+        }
+        else{
+            $cars = Cache::remember($cacheKey, 600, function(){
+                return Car::latest()->where('allowed', true)->paginate(12);
+            });
+        }
 
         return view('car.index', ['cars' => $cars]);
     }
@@ -54,7 +64,17 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        $car->load(['user', 'carimages']);
+        $cacheKey = $car->id;
+        
+        if(Cache::has($cacheKey)){
+            $car = Cache::get($cacheKey);
+        }
+        else{
+            $car = Cache::remember($cacheKey, 600, function() use($car){
+                return $car->load(['user', 'carimages']);
+            });
+        }
+        
         $cars = Car::where('user_id', $car->user_id)->where('allowed', true)
         ->inRandomOrder()->limit(9)->get();
         return view('car.show', ['car' => $car, 'cars' => $cars]);
