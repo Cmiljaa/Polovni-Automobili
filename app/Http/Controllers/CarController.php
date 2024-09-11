@@ -99,6 +99,8 @@ class CarController extends Controller
 
         $car->update($validatedData);
 
+        $car->carimages()->delete();
+
         $this->deleteImages($car->carimages);
 
         $this->addImages($request->images, $car->id);

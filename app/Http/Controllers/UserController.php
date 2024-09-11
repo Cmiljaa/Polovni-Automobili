@@ -124,16 +124,7 @@ class UserController extends Controller
 
     public function list(){
 
-        $cacheKey = request()->get('page', 1) . Auth::id();
-
-        if(Cache::has($cacheKey)){
-            $cars = Cache::get($cacheKey);
-        }
-        else{
-            $cars = Cache::remember($cacheKey, 600, function(){
-                return Car::where('user_id', Auth::id())->latest()->paginate(12);
-            });
-        }
+        $cars =  Car::where('user_id', Auth::id())->latest()->paginate(12);
 
         return view('user.list', ['cars' => $cars]);
     }
