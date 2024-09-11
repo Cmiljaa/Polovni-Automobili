@@ -3,7 +3,7 @@
 @section('content')
     <div class="basic-container" style="max-width: 80%; border: 0px; margin-top: 20px;">
         <div class="row">
-            <div class="col-md-6 position-relative">
+            <div class="col-md-7 position-relative">
                 <div class="image-box">
                     <img src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" 
                          alt="Image not loaded" 
@@ -13,7 +13,7 @@
                 </div>
                 <i class="fa fa-search-plus zoom-icon-overlay"></i>
             </div>
-            <div class="col-md-6" style="font-size: 18px; margin-top: 10px;">
+            <div class="col-md-5 mt-2" style="font-size: 18px;">
                 <h3>{{$car->brand}} {{$car->model}}</h3>
                 <p><strong>Price:</strong> {{ number_format($car->price, 0, '', '.') }} €</p>
                 <p><strong>Model:</strong> {{$car->model}}</p>

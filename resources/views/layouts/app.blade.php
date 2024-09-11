@@ -8,6 +8,7 @@
     <title>Polovni Automobili</title>
     <link rel="icon" href="{{asset('storage/icons/car-svgrepo-com.svg')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
     body {
         background: #e6e6e6;
@@ -31,21 +32,21 @@
     }
 
     .image-box {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    height: 400px;
-    overflow: hidden;
-    background: #f0f0f0; 
-    border-radius: 8px;
-    border: 2px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: relative;
+        width: 120%;
+        max-width: 650px;
+        height: 500px;
+        overflow: hidden;
+        background: #f0f0f0; 
+        border-radius: 8px;
+        border: 2px solid #ddd;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
     }
 
     .image-box img {
-        width: 100%;
+        width: 120%;
         height: 100%;
-        object-fit: cover; 
+        object-fit: cover;
         display: block;
     }
 
@@ -149,8 +150,10 @@
     }
     
     .car-card img {
-        width: 350px;
-        height: 250px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* This will make the image fill the container, cropping excess parts */
+        max-height: 250px;
     }
     
     .car-card-body {
@@ -365,6 +368,8 @@
     </div>
     @include('partials.footer')
 </body>
-
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 </html>
