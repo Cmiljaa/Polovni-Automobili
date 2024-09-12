@@ -1,2 +1,8 @@
 <label for="model" class="form-label">Model</label>
-<input type="text" name="model" id="model" required placeholder="Model" class="form-control" value="{{ old('model') ?? $selectedModel ?? '' }}">
+<select id="model" class="form-select" name="model" disabled>
+    @foreach (config('brands') as $brand => $models)
+        @foreach ($models as $model)
+            <option data-option="{{ $brand }}">{{ $model }}</option>
+        @endforeach
+    @endforeach
+</select>
