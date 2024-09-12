@@ -6,12 +6,12 @@
     <div class="car-container">
         <h1>Cars</h1>
         @include('partials.sorting', ['selectedSort' => request('sort')])
-        
+
         <div class="row">
             @forelse ($cars as $car)
                 <div class="col-md-4 col-sm-6 mb-4">
                     <div class="car-card">
-                        <img  src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" alt="Image not loaded">
+                        <img src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" alt="Image not loaded">
                     </div>
                     <div class="car-card-body">
                         <h5>{{$car->brand}} {{$car->model}}</h5>
@@ -31,5 +31,6 @@
         </div>
     </div>
     
- 
 @endsection
+
+<script src="{{asset('js/brands-models.js')}}"></script>

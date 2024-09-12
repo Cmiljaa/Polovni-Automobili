@@ -3,13 +3,19 @@
         <h3 class="text-center mb-4">Search Car</h3>
         <form action="{{route('cars.filter')}}" method="GET">
             <div class="row mb-3">
-                <div class="col-md-4">
+
+                <div class="col-md-3">
                     @include('car.parts.brand', ['selectedBrand' => request('brand')])
                 </div>
-                <div class="col-md-4">
+
+                <div class="col-md-3">
+                    @include('car.parts.model')
+                </div>
+
+                <div class="col-md-3">
                     @include('car.parts.price', ['label'=>'Price up to', 'selectedPrice' => request('price')])
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     @include('car.parts.fuel', ['selectedFuel' => request('fuel')])
                 </div>
             </div>
