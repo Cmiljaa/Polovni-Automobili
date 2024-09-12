@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    @include('car.parts.model')
+                    @include('car.parts.model', ['selectedModel' => request('model')])
                 </div>
 
                 <div class="col-md-3">
