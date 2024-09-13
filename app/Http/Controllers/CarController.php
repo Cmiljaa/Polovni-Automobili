@@ -122,7 +122,7 @@ class CarController extends Controller
     public function filter(Request $request){
         $query = Car::query();
 
-        $query->ByParams(['brand', 'fuel', 'body_type']);
+        $query->ByParams(['brand', 'fuel', 'body_type', 'model']);
 
         $query->ByPrice($request->input('price'));
 

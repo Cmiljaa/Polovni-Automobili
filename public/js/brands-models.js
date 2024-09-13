@@ -1,35 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
     let brand = document.querySelector('#brand');
     let model = document.querySelector('#model');
-    let options = Array.from(model.querySelectorAll('option')); // Convert NodeList to Array
+    let options = Array.from(model.querySelectorAll('option'));
 
     function updateModels(selectedBrand) {
-        var fragment = document.createDocumentFragment();
+        let fragment = document.createDocumentFragment();
 
-        model.disabled = !selectedBrand; // Enable/Disable model dropdown based on brand selection
+        model.disabled = !selectedBrand;
 
         if (!selectedBrand) {
-            // If no brand selected, clear and disable model dropdown
             model.innerHTML = ''; 
             model.disabled = true;
             return;
         }
 
-        // Append models that match the selected brand
+        let allModelsOption = document.createElement('option');
+        allModelsOption.value = '';
+        allModelsOption.textContent = 'All Models';
+        fragment.appendChild(allModelsOption);
+
         options.forEach(option => {
             if (option.dataset.option === selectedBrand) {
-                fragment.appendChild(option.cloneNode(true)); // Use cloneNode to avoid moving options
+                fragment.appendChild(option.cloneNode(true));
             }
         });
 
-        model.innerHTML = ''; // Clear existing options
-        model.appendChild(fragment); // Append filtered options
+        model.innerHTML = '';
+        model.appendChild(fragment);
     }
 
     brand.addEventListener('change', function() {
         updateModels(brand.value);
     });
 
-    // Optional: Automatically trigger selection if a brand is already selected
     updateModels(brand.value);
 });
