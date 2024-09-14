@@ -32,22 +32,26 @@
     }
 
     .image-box {
+        justify-content: center;
+        align-content: center;
         position: relative;
-        width: 120%;
-        max-width: 650px;
-        height: 500px;
+        width: 100%;
+        max-width: 750px;
+        height: 100%;
         overflow: hidden;
         background: #f0f0f0; 
         border-radius: 8px;
         border: 2px solid #ddd;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
     }
 
     .image-box img {
-        width: 120%;
-        height: 100%;
+        width: auto;
+        max-width: 100%;
+        height: auto;
         object-fit: cover;
-        display: block;
     }
 
     .zoom-icon-overlay {
@@ -60,6 +64,14 @@
         opacity: 0;
         transition: opacity 0.3s ease;
         pointer-events: none;
+    }
+
+    .image-box:hover .zoom-icon-overlay {
+        opacity: 1;
+    }
+
+    .text-center {
+        text-align: center;
     }
 
     .image-box:hover .zoom-icon-overlay {
@@ -127,10 +139,34 @@
         .w-75 {
             width: 100%;
         }
-
         .row > div {
             margin-top:  0px;
             margin-bottom: 15px;
+        }
+        .legal-container {
+            padding: 15px;
+        }
+
+        .legal-container h1 {
+            font-size: 28px;
+        }
+
+        .legal-div h2 {
+            font-size: 22px;
+        }
+
+        .legal-div h4 {
+            font-size: 18px;
+        }
+
+        .legal-div p {
+            font-size: 16px;
+        }
+        .info-container {
+            text-align: center;
+        }
+        .row {
+            flex-direction: column;
         }
     }
     
@@ -152,7 +188,7 @@
     .car-card img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* This will make the image fill the container, cropping excess parts */
+        object-fit: cover;
         max-height: 250px;
     }
     
@@ -331,32 +367,38 @@
         color: #606060;
     }
 
-    @media (max-width: 768px) {
-        .legal-container {
-            padding: 15px;
-        }
-
-        .legal-container h1 {
-            font-size: 28px;
-        }
-
-        .legal-div h2 {
-            font-size: 22px;
-        }
-
-        .legal-div h4 {
-            font-size: 18px;
-        }
-
-        .legal-div p {
-            font-size: 16px;
-        }
-    }
-
     .sort{
         margin-bottom: 10px;
         max-width: 25%;
         min-width: 120px;
+    }
+
+    .info-container {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 1100px;
+        margin: 35px auto;
+        font-family: Arial, sans-serif;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .col {
+        flex: 1;
+    }
+
+    .col p {
+        margin: 12px 0;
+        font-size: 20px;
+    }
+
+    .col p strong {
+        color: #333;
     }
     </style>
     
