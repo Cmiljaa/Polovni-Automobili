@@ -1,30 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="basic-container" style="max-width: 80%; border: 0px; margin-top: 20px;">
-        <div class="row">
-            <div class="col-md-7 position-relative">
-                <div class="image-box">
-                    <img src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" 
-                         alt="Image not loaded" 
-                         class="img-fluid zoom-icon" 
-                         data-bs-toggle="modal" 
-                         data-bs-target="#largeModal">
-                </div>
+    <div class="basic-container text-center mt-1" style="max-width: 80%; border: 0px;">
+        <h1 class="text-center">{{$car->brand}} {{$car->model}}</h1>
+        <div class="d-flex justify-content-center">
+            <div class="image-box position-relative">
+                <img src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" 
+                    alt="Image not loaded" 
+                    class="img-fluid zoom-icon" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#largeModal">
                 <i class="fa fa-search-plus zoom-icon-overlay"></i>
-            </div>
-            <div class="col-md-5 mt-2" style="font-size: 18px;">
-                <h3>{{$car->brand}} {{$car->model}}</h3>
-                <p><strong>Price:</strong> {{ number_format($car->price, 0, '', '.') }} €</p>
-                <p><strong>Model:</strong> {{$car->model}}</p>
-                <p><strong>Mileage:</strong> {{number_format($car->mileage, 0, '', '.')}} km</p>
-                <p><strong>Year:</strong> {{ $car->year }}</p>
-                <p><strong>Fuel:</strong> {{ Str::ucfirst($car->fuel) }}</p>
-                <p><strong>Body Type:</strong> {{ Str::ucfirst($car->body_type) }}</p>
-                <p><strong>Phone:</strong> {{ $car->user->phone }}</p>
             </div>
         </div>
     </div>
+
+    <div class="info-container">
+        <div class="row">
+            <div class="col">
+                <p><strong>Price:</strong> {{ number_format($car->price, 0, '', '.') }} €</p>
+                <p><strong>Mileage:</strong> {{number_format($car->mileage, 0, '', '.')}} km</p>
+                <p><strong>Year:</strong> {{ $car->year }}.</p>
+            </div>
+            <div class="col">
+                <p><strong>Power:</strong> 500 hp</p>
+                <p><strong>Fuel:</strong> {{$car->fuel}}</p>
+                <p><strong>Transmission:</strong> Automatic</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="collapse" id="collapseExample">
+        <div class="info-container mt-0 mb-3">
+            <div class="row">
+                <div class="col">
+                    <p><strong>Drive System:</strong> Front wheel</p>
+                    <p><strong>Cubic Capacity:</strong> 1000 cm<sup>3</sup></p>
+                    <p><strong>Number of Seats:</strong> 5 seats</p>
+                </div>
+                <div class="col">
+                    <p><strong>Body type:</strong> {{$car->body_type}}</p>
+                    <p><strong>Door Count:</strong> 5 doors</p>
+                    <p><strong>Phone:</strong> {{ $car->user->phone }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <a data-bs-toggle="collapse" href="#collapseExample" role="button" style="display: flex; justify-content:center; color:#ffc107; font-size: 20px;">
+        Show more
+    </a>
 
     <div class="container">
         <div class="modal fade" id="largeModal" tabindex="-1" aria-labelledby="largeModalLabel" aria-hidden="true">
