@@ -19,8 +19,8 @@ class CarFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'brand' => $brand = fake()->randomElement(array_keys(config('brands'))),
-            'model' => fake()->randomElement(config('brands')[$brand]),
+            'brand' => $brand = fake()->randomElement(array_keys(config('car.brands'))),
+            'model' => fake()->randomElement(config('car.brands')[$brand]),
             'price' => fake()->numberBetween(5000, 100000),
             'mileage' => fake()->numberBetween(25000, 300000),
             'fuel' => fake()->randomElement(config('car.fuels')),

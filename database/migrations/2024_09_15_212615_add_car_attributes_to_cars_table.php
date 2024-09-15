@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('door_count');
             $table->integer('number_of_seats');
             $table->integer('cubic_capacity');
+            $table->timestamps();
         });
     }
 
@@ -27,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('cars', function (Blueprint $table) {
-            $table->dropColumn(['transmission, power, drive_system, door_count, number_of_seats, cubic_capacity']);
+            $table->dropColumn(['transmission', 'power', 'drive_system', 'door_count', 'number_of_seats', 'cubic_capacity']);
         });
     }
 };

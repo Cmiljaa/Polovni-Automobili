@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             Car::factory(rand(5, 10))->create([
                 'user_id' => $user->id
             ])->each(function ($car) {
-                CarImage::factory(rand(5, 8))->create([
+                CarImage::factory(rand(2, 4))->create([
                     'car_id' => $car->id
                 ]);
             });
