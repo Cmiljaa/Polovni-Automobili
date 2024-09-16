@@ -23,9 +23,9 @@
                 <p><strong>Year:</strong> {{ $car->year }}.</p>
             </div>
             <div class="col">
-                <p><strong>Power:</strong> 500 hp</p>
+                <p><strong>Power:</strong> {{$car->power}} hp</p>
                 <p><strong>Fuel:</strong> {{$car->fuel}}</p>
-                <p><strong>Transmission:</strong> Automatic</p>
+                <p><strong>Transmission:</strong> {{$car->transmission}}</p>
             </div>
         </div>
     </div>
@@ -34,13 +34,13 @@
         <div class="info-container mt-0 mb-3">
             <div class="row">
                 <div class="col">
-                    <p><strong>Drive System:</strong> Front wheel</p>
-                    <p><strong>Cubic Capacity:</strong> 1000 cm<sup>3</sup></p>
-                    <p><strong>Number of Seats:</strong> 5 seats</p>
+                    <p><strong>Drive System:</strong> {{$car->drive_system}}</p>
+                    <p><strong>Cubic Capacity:</strong> {{$car->cubic_capacity}} cm<sup>3</sup></p>
+                    <p><strong>Number of Seats:</strong> {{$car->number_of_seats}} seats</p>
                 </div>
                 <div class="col">
                     <p><strong>Body type:</strong> {{$car->body_type}}</p>
-                    <p><strong>Door Count:</strong> 5 doors</p>
+                    <p><strong>Door Count:</strong> {{$car->door_count}} doors</p>
                     <p><strong>Phone:</strong> {{ $car->user->phone }}</p>
                 </div>
             </div>

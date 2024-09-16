@@ -45,6 +45,12 @@
                 @enderror
             </div>
             <div class="mb-3">
+                @include('car.parts.power', ['selectedPower' => $car->power])
+                @error('power')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-3">
                 @include('car.parts.fuel', ['selectedFuel' => $car->fuel])
                 @error('fuel')
                     <p class="text-danger">{{ $message }}</p>

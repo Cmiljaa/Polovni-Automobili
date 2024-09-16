@@ -17,6 +17,12 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    @include('car.parts.body_type')
+                    @error('body_type')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
                     @include('car.parts.mileage')
                     @error('mileage')
                         <p class="text-danger">{{$message}}</p>
@@ -25,12 +31,6 @@
                 <div class="mb-3">
                     @include('car.parts.price', ['label'=>'Price'])
                     @error('price')
-                        <p class="text-danger">{{$message}}</p>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    @include('car.parts.fuel')
-                    @error('fuel')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
@@ -44,8 +44,44 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    @include('car.parts.body_type')
-                    @error('body_type')
+                    @include('car.parts.power')
+                    @error('power')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    @include('car.parts.fuel')
+                    @error('fuel')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    @include('car.parts.transmission')
+                    @error('transmission')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    @include('car.parts.drive_system')
+                    @error('drive_system')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    @include('car.parts.cubic_capacity')
+                    @error('cubic_capacity')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    @include('car.parts.number_of_seats')
+                    @error('number_of_seats')
+                        <p class="text-danger">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    @include('car.parts.door_count')
+                    @error('door_count')
                         <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>

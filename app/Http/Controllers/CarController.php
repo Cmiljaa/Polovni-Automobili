@@ -193,6 +193,12 @@ class CarController extends Controller
             'mileage' => 'required|max:2000000',
             'model' => 'required|max:50',
             'body_type' => 'required',
+            'power' => 'required|integer|min:1',
+            'transmission' => 'required|string',
+            'drive_system' => 'required|string',
+            'cubic_capacity' => 'required|integer|min:100',
+            'number_of_seats' => 'required|integer|min:2|max:7',
+            'door_count' => 'required|integer|min:2|max:5',
             'images.*' => 'image|mimes:jpeg,png,jpg|max:4096',
         ]);
     }
