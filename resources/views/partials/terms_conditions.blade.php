@@ -75,7 +75,7 @@
     <div class="legal-div">
         <h2>9. Contact Us</h2>
         <p>
-            For any questions about these Terms and Conditions, please contact us at <a href="mailto:dsmiljanic40@gmail.com">dsmiljanic40@gmail.com</a>.
+            For any questions about these Terms and Conditions, please contact us at <a href="mailto:dsmiljanic40@gmail.com">email</a>.
         </p>
     </div>
 </div>

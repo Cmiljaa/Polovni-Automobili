@@ -48,7 +48,7 @@
 
     <div class="legal-div">
         <h2>7. Contact Us</h2>
-        <p>If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:dsmiljanic40@gmail.com">dsmiljanic40@gmail.com</a>.</p>
+        <p>If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:dsmiljanic40@gmail.com">email</a>.</p>
     </div>
 </div>
 @endsection
