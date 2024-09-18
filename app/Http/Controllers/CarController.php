@@ -74,7 +74,7 @@ class CarController extends Controller
             });
         }
         
-        $cars = Car::where('user_id', $car->user_id)->where('allowed', true)
+        $cars = Car::where('user_id', $car->user_id)->where('allowed', true)->where('id', '!=', $car->id)
         ->inRandomOrder()->limit(9)->get();
         return view('car.show', ['car' => $car, 'cars' => $cars]);
     }
