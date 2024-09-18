@@ -56,7 +56,6 @@ class CarController extends Controller
         $this->addImages($request->images, $car->id);
 
         return redirect(route('cars.index'))->with('success', 'Your car has been successfully submitted! It will be reviewed and approved by our team within the next few hours.');
-        
     }
 
     /**
@@ -93,15 +92,17 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
+        $this->deleteImages($car->carimages);
+
+        $car->carimages()->delete();
+
+        Cache::forget($car->id);
+
         $validatedData = $this->validateData($request);
 
         $validatedData['user_id'] = Auth::id();
 
         $car->update($validatedData);
-
-        $car->carimages()->delete();
-
-        $this->deleteImages($car->carimages);
 
         $this->addImages($request->images, $car->id);
 
@@ -194,8 +195,8 @@ class CarController extends Controller
             'model' => 'required|max:50',
             'body_type' => 'required',
             'power' => 'required|integer|min:1',
-            'transmission' => 'required|string',
-            'drive_system' => 'required|string',
+            'transmission' => 'required',
+            'drive_system' => 'required',
             'cubic_capacity' => 'required|integer|min:100',
             'number_of_seats' => 'required|integer|min:2|max:7',
             'door_count' => 'required|integer|min:2|max:5',
