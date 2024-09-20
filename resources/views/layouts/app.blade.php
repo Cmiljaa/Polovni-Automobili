@@ -50,6 +50,7 @@
     .image-box img {
         width: auto;
         max-width: 100%;
+        max-height: 500px;
         height: auto;
         object-fit: cover;
     }

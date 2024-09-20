@@ -40,7 +40,7 @@
                 </div>
                 <div class="col">
                     <p><strong>Body type:</strong> {{$car->body_type}}</p>
-                    <p><strong>Door Count:</strong> {{$car->door_count}} doors</p>
+                    <p><strong>Door Count:</strong> {{$car->door_count}} door</p>
                     <p><strong>Phone:</strong> {{ $car->user->phone }}</p>
                 </div>
             </div>
