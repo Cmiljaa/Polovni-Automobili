@@ -88,7 +88,7 @@
         padding: 20px;
         border: 2px orange solid;
         margin: 35px auto;
-        max-width: 72.5%;
+        max-width: 1100px;
         border-radius: 8px;
     }
     
@@ -132,17 +132,15 @@
             padding: 20px;
         }
 
-        .search-container{
-            max-width: 90%;
-            margin-top: 35px;
-        }
         .w-75 {
             width: 100%;
         }
+
         .row > div {
             margin-top:  0px;
             margin-bottom: 15px;
         }
+
         .legal-container {
             padding: 15px;
         }
@@ -162,9 +160,11 @@
         .legal-div p {
             font-size: 16px;
         }
+
         .info-container {
             text-align: center;
         }
+
         .row {
             flex-direction: column;
         }
