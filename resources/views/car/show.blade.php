@@ -53,7 +53,7 @@
 
     <div class="container">
         <div class="modal fade" id="largeModal" tabindex="-1" aria-labelledby="largeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-fullscreen-sm-down">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div id="carouselExampleIndicators" class="carousel slide">

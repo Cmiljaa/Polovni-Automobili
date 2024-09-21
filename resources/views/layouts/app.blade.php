@@ -278,8 +278,7 @@
     }
 
     .carousel-item img {
-        max-width: 100%;
-        max-height: 79vh;
+        height: 100%;
         height: auto;
         object-fit: contain; 
     }

@@ -1,3 +1,3 @@
 <?php
 
-return ['Front-Wheel', 'Rear-Wheel', 'All-Wheel', 'Four-Wheel'];
+return ['All-Wheel', 'Four-Wheel', 'Front-Wheel', 'Rear-Wheel'];
