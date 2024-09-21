@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
     body {
         background: #e6e6e6;
         display: flex;

@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('cars.index') }}">
-            <span class="fs-3 fw-bold text-dark">Polovni Automobili</span>
-        </a>        
+            <span class="fs-4 fw-bold text-dark">Polovni Automobili</span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse mt-3" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse mt-2" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-lg-0"></ul>
 
             <ul class="navbar-nav ms-auto">
