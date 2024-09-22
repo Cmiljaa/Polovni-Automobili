@@ -30,7 +30,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                @include('car.parts.price', ['label' => 'Price', 'selectedPrice' => $car->price])
+                @include('car.parts.price', ['selectedPrice' => $car->price])
                 @error('price')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
