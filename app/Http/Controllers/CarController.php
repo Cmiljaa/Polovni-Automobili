@@ -123,11 +123,11 @@ class CarController extends Controller
     public function filter(Request $request){
         $query = Car::query();
 
-        $query->ByParams(['brand', 'fuel', 'body_type', 'model']);
+        $query->FliterByAttributes(['brand', 'fuel', 'body_type', 'model']);
 
-        $query->ByPrice($request->input('price'));
+        $query->FilterByMaxLimits(['price', 'power', 'mileage', 'cubic_capacity', 'door_count', 'number_of_seats']);
 
-        $query->ByYear($request->input('year_from'), $request->input('year_to'));
+        $query->FilterByYear($request->input('year_from'), $request->input('year_to'));
 
         $query->Sort($request->input('sort'));
 

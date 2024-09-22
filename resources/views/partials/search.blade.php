@@ -58,7 +58,7 @@
             </div>
 
             <div class="text-center">
-                <button type="submit" data-bs-toggle="collapse" data-bs-target="#collapseExample" class="btn btn-warning">Search</button>
+                <button type="submit" class="btn btn-warning">Search</button>
                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Advanced Search
                 </a>
