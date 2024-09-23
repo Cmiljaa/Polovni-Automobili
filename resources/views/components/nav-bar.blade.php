@@ -10,7 +10,7 @@
             <ul class="navbar-nav me-auto mb-lg-0"></ul>
 
             <ul class="navbar-nav ms-auto">
-                @if (Auth::check() && Auth::user()->is_admin)
+                @if ($isAdmin)
                     <li class="nav-item mx-md-2 mb-2">
                         <a href="{{route('admin.dashboard')}}" class="btn btn-primary px-3 py-2 shadow-sm w-100">Dashboard</a>
                     </li>
@@ -20,7 +20,7 @@
                             <button class="btn btn-danger px-3 py-2 shadow-sm w-100" type="submit">Logout</button>
                         </form>
                     </li>
-                @elseif (Auth::check())
+                @elseif ($isAuth)
                     <li class="nav-item mx-md-2 mb-2">
                         <a href="{{route('user.edit', Auth::id())}}" class="btn btn-secondary px-3 py-2 shadow-sm w-100">Your Profile</a>
                     </li>
