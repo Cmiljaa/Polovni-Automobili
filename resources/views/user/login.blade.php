@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     <div class="basic-container mb-5">
         <h3 class="text-center mb-4">Login</h3>
@@ -19,5 +20,9 @@
                 <button type="submit" class="btn btn-primary w-100">Submit</button>
             </form>
         </form>
+
+        <div class="text-center mt-3">
+            <p>You don't have an account? <a href="{{route('user.create')}}">Register here</a></p>
+        </div>
     </div>
 @endsection
