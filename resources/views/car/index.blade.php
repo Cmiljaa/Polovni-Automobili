@@ -32,5 +32,3 @@
     </div>
     
 @endsection
-
-<script src="{{asset('js/brands-models.js')}}"></script>

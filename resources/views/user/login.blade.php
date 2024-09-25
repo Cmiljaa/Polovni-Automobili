@@ -16,6 +16,11 @@
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    
+                    <div class="form-check mt-2">
+                        <input type="checkbox" class="form-check-input" id="showPassword">
+                        <label class="form-check-label" for="showPassword">Show Password</label>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Submit</button>
             </form>
