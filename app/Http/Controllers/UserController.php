@@ -96,7 +96,8 @@ class UserController extends Controller
         return view('user.login');
     }
 
-    public function handleLogin(Request $request){
+    public function handleLogin(Request $request)
+    {
         $validatedData = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:8'
@@ -105,15 +106,17 @@ class UserController extends Controller
         if(Auth::attempt($validatedData)){
             $request->session()->regenerate();
             if(Auth::user()->is_admin){
-                return redirect('/admin');
+                return redirect('/admin')->with('success', 'Successfully logged in as admin!');
             }
             return redirect(route('cars.index'))->with('success', 'Successfully logged in!');
         }
-
-        return view('user.login', ['email' => 'Invalid credentials']);
+    
+        return redirect()->back()->withErrors(['email' => 'Invalid credentials'])->withInput();
     }
+    
 
-    public function logout(Request $request){
+    public function logout(Request $request)
+    {
         Auth::logout();
         
         $request->session()->invalidate();
@@ -122,7 +125,8 @@ class UserController extends Controller
         return redirect(route('cars.index'))->with('success', 'Successfully logged out!');
     }
 
-    public function list(){
+    public function list()
+    {
 
         $cars =  Car::where('user_id', Auth::id())->latest()->paginate(12);
 

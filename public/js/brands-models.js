@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateModels(brand.value);
 });
 
-document.querySelector("#showPassword").addEventListener('click', function(){
+document.querySelector("#show_password").addEventListener('click', function(){
     let password = document.querySelector("#password");
     password.type = this.checked ? "text" : "password";
 })

@@ -214,12 +214,11 @@
     .car-card-body .btn-show {
         background-color: #ffc107;
         color: rgb(0, 0, 0);
-        border: none;
+        border: 1px solid #ffc107;
     }
     
     .car-card-body .btn-show:hover {
-        background-color: rgb(255, 255, 255);
-        border: 1px solid #ffc107;
+        background-color: #fff;
         color: #000;
     }
 
