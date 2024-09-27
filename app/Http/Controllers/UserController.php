@@ -87,12 +87,9 @@ class UserController extends Controller
         return view('user.login');
     }
 
-    public function handleLogin(Request $request)
+    public function handleLogin(LoginRequest $request)
     {
-        $validatedData = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:8'
-        ]);
+        $validatedData = $request->validated();
 
         if(Auth::attempt($validatedData)){
             $request->session()->regenerate();
