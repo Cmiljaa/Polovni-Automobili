@@ -33,8 +33,8 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="confirm_password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                <label for="password_confirmation" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
             </div>
             <button type="submit" class="btn btn-primary w-100">Submit</button>
         </form>

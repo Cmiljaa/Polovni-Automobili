@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Car;
-use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
@@ -29,14 +30,9 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:80|min:8', 
-            'email' => 'required|email',
-            'phone' => 'required|min:5|max:15',
-            'password' => 'required|min:8|same:confirm_password'
-        ]);
+        $validatedData = $request->validated();
 
         $validatedData['password'] = bcrypt($validatedData['password']);
 
@@ -67,14 +63,9 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:80|min:8', 
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'required|min:5|max:15',
-            'password' => 'required|min:8|same:confirm_password'
-        ]);
+        $validatedData = $request->validated();
 
         $validatedData['password'] = bcrypt($validatedData['password']);
 
