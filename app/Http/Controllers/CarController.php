@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CarRequest;
 use App\Models\Car;
 use App\Models\CarImage;
 use Illuminate\Support\Facades\Auth;
@@ -45,9 +46,9 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarRequest $request)
     {
-        $validatedData = $this->validateData($request);
+        $validatedData = $request->validated();
 
         $validatedData['user_id'] = Auth::id();
 
@@ -90,7 +91,7 @@ class CarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Car $car)
+    public function update(CarRequest $request, Car $car)
     {
         $this->deleteImages($car->carimages);
 
@@ -98,7 +99,7 @@ class CarController extends Controller
 
         Cache::forget($car->id);
 
-        $validatedData = $this->validateData($request);
+        $validatedData = $request->validated();
 
         $validatedData['user_id'] = Auth::id();
 
@@ -183,24 +184,5 @@ class CarController extends Controller
                 'image' => 'storage/images/' . $fileNewName
             ]);
         }
-    }
-
-    public function validateData(Request $request){
-        return $request->validate([
-            'brand' => 'required',
-            'price' => 'required|max:1000000',
-            'fuel' => 'required',
-            'year' => 'required',
-            'mileage' => 'required|max:2000000',
-            'model' => 'required|max:50',
-            'body_type' => 'required',
-            'power' => 'required|integer|min:1',
-            'transmission' => 'required',
-            'drive_system' => 'required',
-            'cubic_capacity' => 'required|integer|min:100',
-            'number_of_seats' => 'required|integer|min:2|max:7',
-            'door_count' => 'required|integer|min:2|max:5',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:4096',
-        ]);
     }
 }
