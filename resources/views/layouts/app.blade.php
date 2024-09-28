@@ -119,7 +119,7 @@
         width: 100%;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 425px) {
 
         .message-container {
             margin: 15px auto -15px;
@@ -172,6 +172,12 @@
 
         .row {
             flex-direction: column;
+        }
+    }
+
+    @media(max-width: 320px){
+        .text-center a{
+            margin-top: 10px;
         }
     }
     
