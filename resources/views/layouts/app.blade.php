@@ -440,6 +440,10 @@
     .col p strong {
         color: #333;
     }
+
+    .unallowed{
+        color: red;
+    }
     </style>
     
 </head>

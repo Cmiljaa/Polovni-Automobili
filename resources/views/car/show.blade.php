@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="basic-container text-center mt-1" style="max-width: 80%; border: 0px;">
-        <h1 class="text-center">{{$car->brand}} {{$car->model}}</h1>
+        <h1 class="text-center {{ $car->allowed != 1 ? 'unallowed' : '' }}">{{ $car->allowed != 1 ? 'Unallowed' : '' }} {{$car->brand}} {{$car->model}}</h1>
         <div class="d-flex justify-content-center">
             <div class="image-box position-relative">
                 <img src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" 
@@ -18,10 +18,11 @@
     <div class="info-container">
         <div class="row">
             <div class="col">
-                <p><strong>Price:</strong> {{ number_format($car->price, 0, '', '.') }} €</p>
+                <p><strong>Price:</strong> {{number_format($car->price, 0, '', ',')}}€</p>
                 <p><strong>Mileage:</strong> {{number_format($car->mileage, 0, '', '.')}} km</p>
                 <p><strong>Year:</strong> {{ $car->year }}.</p>
             </div>
+            <hr>
             <div class="col">
                 <p><strong>Power:</strong> {{$car->power}} hp</p>
                 <p><strong>Fuel:</strong> {{$car->fuel}}</p>
@@ -38,6 +39,7 @@
                     <p><strong>Cubic Capacity:</strong> {{$car->cubic_capacity}} cm<sup>3</sup></p>
                     <p><strong>Number of Seats:</strong> {{$car->number_of_seats}} seats</p>
                 </div>
+                <hr>
                 <div class="col">
                     <p><strong>Body type:</strong> {{$car->body_type}}</p>
                     <p><strong>Door Count:</strong> {{$car->door_count}} door</p>
@@ -94,24 +96,7 @@
     <div class="car-container">
         <h3>More Cars From This User</h3>
         <div class="row">
-            @forelse ($cars as $car)
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="car-card">
-                        <img  src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" alt="Image not loaded">
-                    </div>
-                    <div class="car-card-body">
-                        <h5>{{$car->brand}} {{$car->model}}</h5>
-                        <p>{{number_format($car->price, 0, '', '.')}} €</p>
-                        <p>{{$car->year}}</p>
-                        <a href="{{route('cars.show', $car)}}"><button class="btn btn-show">See More</button></a>
-                    </div>
-                </div>
-            @empty
-            <div>
-                <h3>No cars found</h3>
-                <img src="{{ asset('storage/icons/car-svgrepo-com.svg') }}" alt="icon not loaded" style="width: 400px; height: 400px;">
-            </div>
-            @endforelse
+            @include('partials.cars')
         </div>
     </div>
 @endsection

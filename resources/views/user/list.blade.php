@@ -9,12 +9,8 @@
                         <img  src="{{ $car->carimages->count() ? asset($car->carimages->first()->image) : asset('storage/images/default.png') }}" alt="Image not loaded">
                     </div>
                     <div class="car-card-body">
-                        @if ($car->allowed != 1)
-                            <h5 style="color: red">{{$car->brand}} {{$car->model}}</h5>
-                        @else
-                            <h5>{{$car->brand}} {{$car->model}}</h5>
-                        @endif
-                        <p>{{number_format($car->price, 0, '', '.')}} €</p>
+                        <h5 class="{{ $car->allowed != 1 ? 'unallowed' : '' }}">{{ $car->brand }} {{ $car->model }}</h5>
+                        <p>{{number_format($car->price, 0, '', ',')}} €</p>
                         <p>{{$car->year}}</p>
                         <a href="{{route('cars.show', $car)}}"><button class="btn btn-show">See More</button></a>
                         <a href="{{route('cars.edit', $car)}}"><button class="btn btn-primary">Edit</button></a>
