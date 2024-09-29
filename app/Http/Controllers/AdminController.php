@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index(){
         $users = User::orderBy('name', 'asc')->where('is_admin', false)->latest()->get();
-        $cars = Car::orderBy('allowed', 'asc')->orderBy('brand', 'asc')->orderBy('created_at', 'desc')->get();
+        $cars = Car::with('user:id,name')->orderBy('allowed', 'asc')->orderBy('brand', 'asc')->orderBy('created_at', 'desc')->get();
         return view('admin.dashboard', ['cars' => $cars, 'users' => $users]);
     }
 

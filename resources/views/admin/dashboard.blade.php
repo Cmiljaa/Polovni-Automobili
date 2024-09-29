@@ -52,13 +52,13 @@
                         <table class="table table-striped mb-0">
                             <thead style="background-color: #002d72;">
                                 <tr>
+                                    <th scope="col">Owner</th>
+                                    <th scope="col">Link</th>
                                     <th scope="col">Brand</th>
                                     <th scope="col">Model</th>
+                                    <th scope="col">Year</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Mileage</th>
-                                    <th scope="col">Fuel</th>
-                                    <th scope="col">Year</th>
-                                    <th scope="col">Body Type</th>
                                     <th scope="col">Allow</th>
                                     <th scope="col">Delete</th>
                                 </tr>
@@ -66,13 +66,13 @@
                             <tbody>
                                 @forelse ($cars as $car)
                                     <tr>
+                                        <td>{{ $car->user->name }}</td>
+                                        <td><a href="{{route('cars.show', $car)}}">View Car</a></td>
                                         <td>{{ $car->brand }}</td>
                                         <td>{{ $car->model }}</td>
-                                        <td>{{number_format($car->price, 0, '', '.')}} €</td>
-                                        <td>{{number_format($car->mileage, 0, '', '.')}} km</td>
-                                        <td>{{ $car->fuel }}</td>
                                         <td>{{ $car->year }}</td>
-                                        <td>{{ $car->body_type }}</td>
+                                        <td>{{number_format($car->price, 0, '', ',')}} €</td>
+                                        <td>{{number_format($car->mileage, 0, '', '.')}} km</td>
                                         @if($car->allowed != 0)
                                             <td>
                                                 <form action="{{ route('admin.allow', ['car' => $car, 'allowed' => 'false']) }}" method="POST" class="btn p-0 border-0">
