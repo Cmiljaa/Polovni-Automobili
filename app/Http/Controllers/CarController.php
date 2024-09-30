@@ -115,10 +115,14 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
+        if (!Auth::user()->is_admin && Auth::user()->id != $car->user_id) {
+            abort(403);
+        }
+        
         $car = $car->load('carimages');
         $this->deleteImages($car->carimages);
         $car->delete();
-        return redirect(route('user.list'))->with('success', 'Successfully deleted car!');
+        return redirect()->back()->with('success', 'Successfully deleted car!');
     }
 
     public function filter(Request $request){

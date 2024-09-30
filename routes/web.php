@@ -38,11 +38,15 @@ Route::middleware('guest')->group(function(){
     ->name('handleLogin');
 });
 
-Route::resource('cars', CarController::class);
-
 Route::resource('user', UserController::class)
 ->except(['index', 'show']);
 
-Route::get('/cars/create', [CarController::class, 'create'])
-->middleware('auth')
-->name('cars.create');
+Route::middleware('auth')->group(function(){
+    Route::get('/cars/create', [CarController::class, 'create'])
+    ->name('cars.create');
+
+    Route::delete('/cars/{car}', [CarController::class, 'destroy'])
+    ->name('cars.destroy');
+});
+
+Route::resource('cars', CarController::class)->except(['create', 'destroy']);
