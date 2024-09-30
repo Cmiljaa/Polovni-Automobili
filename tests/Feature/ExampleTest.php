@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Car;
+use App\Models\User;
+use Illuminate\Http\UploadedFile as HttpUploadedFile;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
@@ -80,6 +82,21 @@ class ExampleTest extends TestCase
         $user = User::factory()->create();
         $response = $this->actingAs($user)->get('/admin');
         $response->assertRedirect('/login');
+    }
+
+    //Admin Dashboard Tests
+
+    public function test_unauthorized_users_cannot_access_admin(): void
+    {
+        $response = $this->get('/admin');
+        $response->assertRedirect('/login');
+    }
+
+    public function test_admin_user_can_access_admin_dashboard(): void
+    {
+        $admin = User::factory()->create(['is_admin' => true]);
+        $response = $this->actingAs($admin)->get('/admin');
+        $response->assertStatus(200);
     }
     /**
      * A basic test example.
