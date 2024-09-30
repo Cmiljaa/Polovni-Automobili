@@ -235,5 +235,11 @@ class ExampleTest extends TestCase
         $response->assertStatus(403);
     }
 
+    //Error Handling Tests
+
+    public function test_404_error_for_non_existing_car(): void
+    {
+        $response = $this->get('/cars/999999');
+        $response->assertStatus(404);
     }
 }
