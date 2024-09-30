@@ -98,6 +98,28 @@ class ExampleTest extends TestCase
         $response = $this->actingAs($admin)->get('/admin');
         $response->assertStatus(200);
     }
+    
+    //Car Listing and Filtering Tests
+    
+    public function test_car_filtering(): void
+    {
+        $car1 = Car::factory()->create(['brand' => 'Audi', 'model' => 'A6']);
+        $car2 = Car::factory()->create(['brand' => 'BMW', 'model' => 'M3']);
+
+        $response = $this->get('/cars/filter?brand=BMW');
+        $response->assertStatus(200);
+        $response->assertSee('BMW M3');
+        $response->assertDontSee('Audi A6');
+    }
+
+    public function test_car_listing(): void
+    {
+        $car = Car::factory()->create(['brand' => 'Audi', 'model' => 'A6']);
+        $response = $this->get('/cars');
+        $response->assertStatus(200);
+        $response->assertSee('Audi A6');
+    }
+
     /**
      * A basic test example.
      */
