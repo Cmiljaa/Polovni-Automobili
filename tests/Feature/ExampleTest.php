@@ -52,17 +52,21 @@ class ExampleTest extends TestCase
 
     public function test_user_can_register(): void
     {
+        $email = fake()->email();
+
         $response = $this->post('/user', [
             'name' => 'John Doe',
-            'email' => fake()->email(),
+            'email' => $email,
             'phone' => '1234123',
             'password' => 'password',
             'password_confirmation' => 'password',
         ]);
-
+        
         $response->assertRedirect('/cars');
-        $this->assertDatabaseHas('users', ['email' => 'johndoe@example.com']);
+
+        $this->assertDatabaseHas('users', ['email' => $email]);
     }
+
 
     public function test_user_can_logout(): void
     {
@@ -110,6 +114,13 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('BMW M3');
         $response->assertDontSee('Audi A6');
+    }
+
+    public function test_car_search_returns_no_results(): void
+    {
+        $response = $this->get('/cars/filter?brand=NonExistingCar');
+        $response->assertStatus(200);
+        $response->assertSee('No cars found');
     }
 
     public function test_car_listing(): void
