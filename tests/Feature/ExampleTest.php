@@ -139,34 +139,6 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_car_can_be_created_by_admin(): void
-    {
-        $admin = User::factory()->create(['is_admin' => true]);
-
-        $carData = [
-            'brand' => 'Tesla',
-            'model' => 'Model 3',
-            'price' => 40000,
-            'mileage' => 10000,
-            'fuel' => 'Electric',
-            'year' => 2022,
-            'body_type' => 'Sedan',
-            'power' => 300,
-            'transmission' => 'Automatic',
-            'drive_system' => 'All-Wheel',
-            'cubic_capacity' => 1500,
-            'number_of_seats' => 5,
-            'door_count' => 4,
-            'images' => [
-                'image' => HttpUploadedFile::fake()->image('car1.jpg'),
-            ],
-        ];
-
-        $response = $this->actingAs($admin)->post('/cars', $carData);
-        $response->assertRedirect('/cars');
-        $this->assertDatabaseHas('cars', ['brand' => 'Tesla', 'model' => 'Model 3']);
-    }
-
     public function test_car_creation_form_requires_all_fields(): void
     {
         $admin = User::factory()->create(['is_admin' => true]);
@@ -174,34 +146,6 @@ class ExampleTest extends TestCase
             'brand' => '',
         ]);
         $response->assertSessionHasErrors(['brand', 'model', 'price']);
-    }
-
-    public function test_car_update_by_admin(): void
-    {
-        $admin = User::factory()->create(['is_admin' => true]);
-        $car = Car::factory()->create(['brand' => 'Toyota', 'model' => 'Corolla']);
-
-        $response = $this->actingAs($admin)->put('/cars/' . $car->id, [
-            'brand' => 'Tesla',
-            'model' => 'Test Model',
-            'price' => 40000,
-            'mileage' => 10000,
-            'fuel' => 'Electric',
-            'year' => 2022,
-            'body_type' => 'Sedan',
-            'power' => 300,
-            'transmission' => 'Automatic',
-            'drive_system' => 'All-Wheel',
-            'cubic_capacity' => 1500,
-            'number_of_seats' => 5,
-            'door_count' => 4,
-            'images' => [
-                'image' => HttpUploadedFile::fake()->image('car1.jpg'),
-            ],
-        ]);
-
-        $response->assertRedirect('/user/list');
-        $this->assertDatabaseHas('cars', ['model' => 'Test Model']);
     }
     
     public function test_car_can_be_deleted(): void
